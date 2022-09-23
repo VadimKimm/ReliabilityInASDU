@@ -91,18 +91,21 @@ struct ContentViewLROne: View {
                     Text("Pk:   ")
                     TextField("", text: $Pk)
                         .frame(width: 50)
+                        .foregroundColor(Pk.isNumeric ? .white : .red)
                 }
 
                 HStack {
                     Text("Pob: ")
                     TextField("", text: $Pob)
                         .frame(width: 50)
+                        .foregroundColor(Pob.isNumeric ? .white : .red)
                 }
 
                 HStack {
                     Text("Pi:    ")
                     TextField("", text: $Pi)
                         .frame(width: 50)
+                        .foregroundColor(Pi.isNumeric ? .white : .red)
                 }
 
                 Spacer()

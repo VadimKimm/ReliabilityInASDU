@@ -1,0 +1,50 @@
+[
+    {
+        "intensityMistakes": "10-4",
+        "description": "Выбор переключателя, управляемого с помощью ключа",
+        "numberOfOperations": "1",
+        "averageTime": "1",
+   },
+    {
+        "intensityMistakes": "10-3",
+        "description": "Выбор переключателей (или двух) не похожего по форме или расположению на нужный переключатель при условии отсутствия ошибки в принятии решения",
+        "numberOfOperations": "10",
+        "averageTime": "1000",
+   },
+    {
+        "intensityMistakes": "3*10-3",
+        "description": "Обычная ошибка при выполнении операции (например, неправильное считывание информации)",
+        "numberOfOperations": "1",
+        "averageTime": "1",
+   },
+    {
+        "intensityMistakes": "3*10-2",
+        "description": "Простые арифметические ошибки при проведении самопроверки, но без выполнения повторных вычислений",
+        "numberOfOperations": "1",
+        "averageTime": "1",
+   },
+    {
+        "intensityMistakes": "0.25",
+        "description": "Обычная ошибка человека, при условии напряженной работы оператора, при которых очень быстро происходят опасные действия",
+        "numberOfOperations": "1",
+        "averageTime": "1",
+   },
+    {
+        "intensityMistakes": "10-2",
+        "description": "Обычная ошибка человека, если в зале управления отсутствует сигнализация о состоянии параметра, упущенного оператором",
+        "numberOfOperations": "1",
+        "averageTime": "1",
+   },
+    {
+        "intensityMistakes": "10-1",
+        "description": "Оператору-контроллеру не удается обнаружить начальную ошибку оператора",
+        "numberOfOperations": "1",
+        "averageTime": "1",
+   },
+    {
+        "intensityMistakes": "10-1",
+        "description": "Персонал другой рабочей смены не проверяет оборудования, если только не дается письменной директивы или специального перечня для проверки",
+        "numberOfOperations": "1",
+        "averageTime": "1",
+   },
+]

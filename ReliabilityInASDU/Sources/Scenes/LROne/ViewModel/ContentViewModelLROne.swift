@@ -14,7 +14,6 @@ struct ContentViewModelLROne {
         var Pop = Double()
         var expPower = Double()
         let Pisp = IntensityMistakes.Probabilities.Pk * IntensityMistakes.Probabilities.Pob * IntensityMistakes.Probabilities.Pi
-        print(Pisp)
 
         for item in array {
             let baseAndPower = item.intensityMistakes.convertToDemical()

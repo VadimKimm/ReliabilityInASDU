@@ -61,5 +61,24 @@ class ParseData: ObservableObject  {
 //        } catch {
 //            print(error)
 //        }
+
+//        let documentsURL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+//        let fileUrl = documentsURL?.appendingPathComponent("test.json")
+//        let fileExists = FileManager.default.fileExists(atPath: fileUrl!.path)
+//        print(fileExists)
+//        print(documentsURL)
+
+        guard let url = Bundle.main.url(forResource: "savedData", withExtension: "json") else {
+            print("Json file not found")
+            return
+        }
+
+        do {
+            let jsonEncoder = JSONEncoder()
+            let jsonData = try jsonEncoder.encode(self.intensityMistakes)
+            try jsonData.write(to: url, options: [.atomic, .noFileProtection])
+        } catch {
+            print(error)
+        }
     }
 }

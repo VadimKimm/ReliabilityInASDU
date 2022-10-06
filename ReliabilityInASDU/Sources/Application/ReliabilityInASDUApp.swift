@@ -11,7 +11,8 @@ import SwiftUI
 struct ReliabilityInASDUApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentViewLROne(viewModel: ContentViewModelLROne())
+//            ContentViewLROne(viewModel: ContentViewModelLROne())
+            ContentViewLRTwo()
         }
     }
 }

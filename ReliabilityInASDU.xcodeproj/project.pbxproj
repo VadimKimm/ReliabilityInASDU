@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD315E3728EECEDF009A5F9D /* ContentViewLRTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD315E3628EECEDF009A5F9D /* ContentViewLRTwo.swift */; };
 		DD42011F28D4DD03007BB9E6 /* blankData.json in Resources */ = {isa = PBXBuildFile; fileRef = DD42011E28D4DD03007BB9E6 /* blankData.json */; };
 		DD42012128D4E010007BB9E6 /* TabButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD42012028D4E010007BB9E6 /* TabButtonView.swift */; };
 		DD42012328D4F41B007BB9E6 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD42012228D4F41B007BB9E6 /* String+Ext.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD315E3628EECEDF009A5F9D /* ContentViewLRTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewLRTwo.swift; sourceTree = "<group>"; };
 		DD42011E28D4DD03007BB9E6 /* blankData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = blankData.json; sourceTree = "<group>"; };
 		DD42012028D4E010007BB9E6 /* TabButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButtonView.swift; sourceTree = "<group>"; };
 		DD42012228D4F41B007BB9E6 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -51,6 +53,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD315E3228EECE91009A5F9D /* LRTwo */ = {
+			isa = PBXGroup;
+			children = (
+				DD315E3328EECEA5009A5F9D /* Model */,
+				DD315E3428EECEA9009A5F9D /* View */,
+				DD315E3528EECEB1009A5F9D /* ViewModel */,
+			);
+			path = LRTwo;
+			sourceTree = "<group>";
+		};
+		DD315E3328EECEA5009A5F9D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DD315E3428EECEA9009A5F9D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DD315E3628EECEDF009A5F9D /* ContentViewLRTwo.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DD315E3528EECEB1009A5F9D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		DDC3754228DDE7EF005A5EE2 /* InnerViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				DDF6E3E528CFB9BE00E72250 /* LROne */,
+				DD315E3228EECE91009A5F9D /* LRTwo */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -249,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD315E3728EECEDF009A5F9D /* ContentViewLRTwo.swift in Sources */,
 				DD42012328D4F41B007BB9E6 /* String+Ext.swift in Sources */,
 				DDF6E3D528CFB6C600E72250 /* ContentViewLROne.swift in Sources */,
 				DDF6E3D328CFB6C600E72250 /* ReliabilityInASDUApp.swift in Sources */,

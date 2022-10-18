@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD1EA21B28EED9A400128FF6 /* SchemeBlockType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1EA21A28EED9A400128FF6 /* SchemeBlockType.swift */; };
+		DD1EA21E28EEE4BD00128FF6 /* SchemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1EA21D28EEE4BD00128FF6 /* SchemeView.swift */; };
+		DD1EA22528EEF28F00128FF6 /* SchemeBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1EA22428EEF28F00128FF6 /* SchemeBlockView.swift */; };
+		DD1EA22728EEF82500128FF6 /* SchemeComponentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1EA22628EEF82500128FF6 /* SchemeComponentsView.swift */; };
+		DD1EA22928EEFB5A00128FF6 /* SchemeElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1EA22828EEFB5A00128FF6 /* SchemeElement.swift */; };
+		DD1EA22C28EF072200128FF6 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1EA22B28EF072200128FF6 /* Date+Ext.swift */; };
+		DD1EA22E28EF0BEB00128FF6 /* SchemeEditBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1EA22D28EF0BEB00128FF6 /* SchemeEditBlockView.swift */; };
+		DD1EA23028EF13B400128FF6 /* SchemeObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1EA22F28EF13B400128FF6 /* SchemeObservable.swift */; };
+		DD1EA23228EF36E400128FF6 /* Double+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1EA23128EF36E400128FF6 /* Double+Ext.swift */; };
 		DD315E3728EECEDF009A5F9D /* ContentViewLRTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD315E3628EECEDF009A5F9D /* ContentViewLRTwo.swift */; };
 		DD42011F28D4DD03007BB9E6 /* blankData.json in Resources */ = {isa = PBXBuildFile; fileRef = DD42011E28D4DD03007BB9E6 /* blankData.json */; };
 		DD42012128D4E010007BB9E6 /* TabButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD42012028D4E010007BB9E6 /* TabButtonView.swift */; };
@@ -24,6 +33,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD1EA21A28EED9A400128FF6 /* SchemeBlockType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeBlockType.swift; sourceTree = "<group>"; };
+		DD1EA21D28EEE4BD00128FF6 /* SchemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeView.swift; sourceTree = "<group>"; };
+		DD1EA22428EEF28F00128FF6 /* SchemeBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeBlockView.swift; sourceTree = "<group>"; };
+		DD1EA22628EEF82500128FF6 /* SchemeComponentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeComponentsView.swift; sourceTree = "<group>"; };
+		DD1EA22828EEFB5A00128FF6 /* SchemeElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeElement.swift; sourceTree = "<group>"; };
+		DD1EA22B28EF072200128FF6 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		DD1EA22D28EF0BEB00128FF6 /* SchemeEditBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeEditBlockView.swift; sourceTree = "<group>"; };
+		DD1EA22F28EF13B400128FF6 /* SchemeObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeObservable.swift; sourceTree = "<group>"; };
+		DD1EA23128EF36E400128FF6 /* Double+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Ext.swift"; sourceTree = "<group>"; };
 		DD315E3628EECEDF009A5F9D /* ContentViewLRTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewLRTwo.swift; sourceTree = "<group>"; };
 		DD42011E28D4DD03007BB9E6 /* blankData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = blankData.json; sourceTree = "<group>"; };
 		DD42012028D4E010007BB9E6 /* TabButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButtonView.swift; sourceTree = "<group>"; };
@@ -53,12 +71,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD1EA21C28EEE4A000128FF6 /* InnerViews */ = {
+			isa = PBXGroup;
+			children = (
+				DD1EA22428EEF28F00128FF6 /* SchemeBlockView.swift */,
+				DD1EA21D28EEE4BD00128FF6 /* SchemeView.swift */,
+				DD1EA22628EEF82500128FF6 /* SchemeComponentsView.swift */,
+				DD1EA22D28EF0BEB00128FF6 /* SchemeEditBlockView.swift */,
+			);
+			path = InnerViews;
+			sourceTree = "<group>";
+		};
+		DD1EA22A28EF06D600128FF6 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DD42012228D4F41B007BB9E6 /* String+Ext.swift */,
+				DD1EA22B28EF072200128FF6 /* Date+Ext.swift */,
+				DD1EA23128EF36E400128FF6 /* Double+Ext.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		DD315E3228EECE91009A5F9D /* LRTwo */ = {
 			isa = PBXGroup;
 			children = (
 				DD315E3328EECEA5009A5F9D /* Model */,
 				DD315E3428EECEA9009A5F9D /* View */,
-				DD315E3528EECEB1009A5F9D /* ViewModel */,
 			);
 			path = LRTwo;
 			sourceTree = "<group>";
@@ -66,6 +104,9 @@
 		DD315E3328EECEA5009A5F9D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DD1EA22F28EF13B400128FF6 /* SchemeObservable.swift */,
+				DD1EA21A28EED9A400128FF6 /* SchemeBlockType.swift */,
+				DD1EA22828EEFB5A00128FF6 /* SchemeElement.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -73,16 +114,10 @@
 		DD315E3428EECEA9009A5F9D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DD1EA21C28EEE4A000128FF6 /* InnerViews */,
 				DD315E3628EECEDF009A5F9D /* ContentViewLRTwo.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		DD315E3528EECEB1009A5F9D /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		DDC3754228DDE7EF005A5EE2 /* InnerViews */ = {
@@ -114,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				DDCD765D28CFBD1800F637CE /* ParseData.swift */,
-				DD42012228D4F41B007BB9E6 /* String+Ext.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -168,6 +202,7 @@
 		DDF6E3E228CFB99F00E72250 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				DD1EA22A28EF06D600128FF6 /* Helpers */,
 				DDF6E3E328CFB9A400E72250 /* Application */,
 				DDF6E3E428CFB9B000E72250 /* Scenes */,
 			);
@@ -284,14 +319,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD1EA21B28EED9A400128FF6 /* SchemeBlockType.swift in Sources */,
 				DD315E3728EECEDF009A5F9D /* ContentViewLRTwo.swift in Sources */,
+				DD1EA23028EF13B400128FF6 /* SchemeObservable.swift in Sources */,
 				DD42012328D4F41B007BB9E6 /* String+Ext.swift in Sources */,
 				DDF6E3D528CFB6C600E72250 /* ContentViewLROne.swift in Sources */,
 				DDF6E3D328CFB6C600E72250 /* ReliabilityInASDUApp.swift in Sources */,
+				DD1EA22E28EF0BEB00128FF6 /* SchemeEditBlockView.swift in Sources */,
 				DD42012128D4E010007BB9E6 /* TabButtonView.swift in Sources */,
+				DD1EA23228EF36E400128FF6 /* Double+Ext.swift in Sources */,
 				DDCD765B28CFBCD100F637CE /* IntensityMistakes.swift in Sources */,
 				DDC3754528DDE833005A5EE2 /* ContentViewModelLROne.swift in Sources */,
 				DDCD765E28CFBD1800F637CE /* ParseData.swift in Sources */,
+				DD1EA22C28EF072200128FF6 /* Date+Ext.swift in Sources */,
+				DD1EA22928EEFB5A00128FF6 /* SchemeElement.swift in Sources */,
+				DD1EA22728EEF82500128FF6 /* SchemeComponentsView.swift in Sources */,
+				DD1EA21E28EEE4BD00128FF6 /* SchemeView.swift in Sources */,
+				DD1EA22528EEF28F00128FF6 /* SchemeBlockView.swift in Sources */,
 				DDC3754128DDD1D1005A5EE2 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

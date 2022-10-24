@@ -20,6 +20,17 @@
 		DD42011F28D4DD03007BB9E6 /* blankData.json in Resources */ = {isa = PBXBuildFile; fileRef = DD42011E28D4DD03007BB9E6 /* blankData.json */; };
 		DD42012128D4E010007BB9E6 /* TabButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD42012028D4E010007BB9E6 /* TabButtonView.swift */; };
 		DD42012328D4F41B007BB9E6 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD42012228D4F41B007BB9E6 /* String+Ext.swift */; };
+		DD9792FD2906BE0300F8695D /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9792FC2906BE0300F8695D /* CustomColors.swift */; };
+		DD9793002906BE1600F8695D /* AxisParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9792FF2906BE1600F8695D /* AxisParameters.swift */; };
+		DD9793022906BE2100F8695D /* KaplanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9793012906BE2100F8695D /* KaplanModel.swift */; };
+		DD9793052906BE4700F8695D /* LineShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9793042906BE4700F8695D /* LineShape.swift */; };
+		DD9793082906BE5F00F8695D /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9793072906BE5F00F8695D /* LineChartView.swift */; };
+		DD97930A2906BE6B00F8695D /* ChartHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9793092906BE6B00F8695D /* ChartHeaderView.swift */; };
+		DD97930C2906BE7C00F8695D /* ChartAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD97930B2906BE7C00F8695D /* ChartAreaView.swift */; };
+		DD97930E2906BE8900F8695D /* YaxisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD97930D2906BE8900F8695D /* YaxisView.swift */; };
+		DD9793102906BE9A00F8695D /* XaxisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD97930F2906BE9A00F8695D /* XaxisView.swift */; };
+		DD9793122906BEA400F8695D /* KeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9793112906BEA400F8695D /* KeyView.swift */; };
+		DD9793142906BEB500F8695D /* ContentViewLRThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9793132906BEB500F8695D /* ContentViewLRThree.swift */; };
 		DDC3754128DDD1D1005A5EE2 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC3754028DDD1D1005A5EE2 /* HeaderView.swift */; };
 		DDC3754528DDE833005A5EE2 /* ContentViewModelLROne.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC3754428DDE833005A5EE2 /* ContentViewModelLROne.swift */; };
 		DDC3754728DDFC23005A5EE2 /* savedData.json in Resources */ = {isa = PBXBuildFile; fileRef = DDC3754628DDFC23005A5EE2 /* savedData.json */; };
@@ -46,6 +57,17 @@
 		DD42011E28D4DD03007BB9E6 /* blankData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = blankData.json; sourceTree = "<group>"; };
 		DD42012028D4E010007BB9E6 /* TabButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButtonView.swift; sourceTree = "<group>"; };
 		DD42012228D4F41B007BB9E6 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		DD9792FC2906BE0300F8695D /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
+		DD9792FF2906BE1600F8695D /* AxisParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxisParameters.swift; sourceTree = "<group>"; };
+		DD9793012906BE2100F8695D /* KaplanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaplanModel.swift; sourceTree = "<group>"; };
+		DD9793042906BE4700F8695D /* LineShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineShape.swift; sourceTree = "<group>"; };
+		DD9793072906BE5F00F8695D /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
+		DD9793092906BE6B00F8695D /* ChartHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartHeaderView.swift; sourceTree = "<group>"; };
+		DD97930B2906BE7C00F8695D /* ChartAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartAreaView.swift; sourceTree = "<group>"; };
+		DD97930D2906BE8900F8695D /* YaxisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YaxisView.swift; sourceTree = "<group>"; };
+		DD97930F2906BE9A00F8695D /* XaxisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XaxisView.swift; sourceTree = "<group>"; };
+		DD9793112906BEA400F8695D /* KeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyView.swift; sourceTree = "<group>"; };
+		DD9793132906BEB500F8695D /* ContentViewLRThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewLRThree.swift; sourceTree = "<group>"; };
 		DDC3754028DDD1D1005A5EE2 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		DDC3754428DDE833005A5EE2 /* ContentViewModelLROne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModelLROne.swift; sourceTree = "<group>"; };
 		DDC3754628DDFC23005A5EE2 /* savedData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = savedData.json; sourceTree = "<group>"; };
@@ -118,6 +140,64 @@
 				DD315E3628EECEDF009A5F9D /* ContentViewLRTwo.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		DD9792F82906BDE600F8695D /* LRThree */ = {
+			isa = PBXGroup;
+			children = (
+				DD9792F92906BDEF00F8695D /* Helpers */,
+				DD9792FA2906BDF300F8695D /* Model */,
+				DD9792FB2906BDF500F8695D /* View */,
+			);
+			path = LRThree;
+			sourceTree = "<group>";
+		};
+		DD9792F92906BDEF00F8695D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DD9792FC2906BE0300F8695D /* CustomColors.swift */,
+				DD9792FF2906BE1600F8695D /* AxisParameters.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		DD9792FA2906BDF300F8695D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DD9793012906BE2100F8695D /* KaplanModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DD9792FB2906BDF500F8695D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DD9793032906BE3400F8695D /* Shape */,
+				DD9793062906BE4F00F8695D /* InnerViews */,
+				DD9793132906BEB500F8695D /* ContentViewLRThree.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DD9793032906BE3400F8695D /* Shape */ = {
+			isa = PBXGroup;
+			children = (
+				DD9793042906BE4700F8695D /* LineShape.swift */,
+			);
+			path = Shape;
+			sourceTree = "<group>";
+		};
+		DD9793062906BE4F00F8695D /* InnerViews */ = {
+			isa = PBXGroup;
+			children = (
+				DD9793072906BE5F00F8695D /* LineChartView.swift */,
+				DD9793092906BE6B00F8695D /* ChartHeaderView.swift */,
+				DD97930B2906BE7C00F8695D /* ChartAreaView.swift */,
+				DD97930D2906BE8900F8695D /* YaxisView.swift */,
+				DD97930F2906BE9A00F8695D /* XaxisView.swift */,
+				DD9793112906BEA400F8695D /* KeyView.swift */,
+			);
+			path = InnerViews;
 			sourceTree = "<group>";
 		};
 		DDC3754228DDE7EF005A5EE2 /* InnerViews */ = {
@@ -222,6 +302,7 @@
 			children = (
 				DDF6E3E528CFB9BE00E72250 /* LROne */,
 				DD315E3228EECE91009A5F9D /* LRTwo */,
+				DD9792F82906BDE600F8695D /* LRThree */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -319,24 +400,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD9793002906BE1600F8695D /* AxisParameters.swift in Sources */,
 				DD1EA21B28EED9A400128FF6 /* SchemeBlockType.swift in Sources */,
 				DD315E3728EECEDF009A5F9D /* ContentViewLRTwo.swift in Sources */,
 				DD1EA23028EF13B400128FF6 /* SchemeObservable.swift in Sources */,
 				DD42012328D4F41B007BB9E6 /* String+Ext.swift in Sources */,
+				DD97930C2906BE7C00F8695D /* ChartAreaView.swift in Sources */,
+				DD9793052906BE4700F8695D /* LineShape.swift in Sources */,
+				DD9793102906BE9A00F8695D /* XaxisView.swift in Sources */,
+				DD97930A2906BE6B00F8695D /* ChartHeaderView.swift in Sources */,
 				DDF6E3D528CFB6C600E72250 /* ContentViewLROne.swift in Sources */,
 				DDF6E3D328CFB6C600E72250 /* ReliabilityInASDUApp.swift in Sources */,
+				DD9793142906BEB500F8695D /* ContentViewLRThree.swift in Sources */,
 				DD1EA22E28EF0BEB00128FF6 /* SchemeEditBlockView.swift in Sources */,
 				DD42012128D4E010007BB9E6 /* TabButtonView.swift in Sources */,
 				DD1EA23228EF36E400128FF6 /* Double+Ext.swift in Sources */,
 				DDCD765B28CFBCD100F637CE /* IntensityMistakes.swift in Sources */,
 				DDC3754528DDE833005A5EE2 /* ContentViewModelLROne.swift in Sources */,
 				DDCD765E28CFBD1800F637CE /* ParseData.swift in Sources */,
+				DD9793082906BE5F00F8695D /* LineChartView.swift in Sources */,
 				DD1EA22C28EF072200128FF6 /* Date+Ext.swift in Sources */,
 				DD1EA22928EEFB5A00128FF6 /* SchemeElement.swift in Sources */,
 				DD1EA22728EEF82500128FF6 /* SchemeComponentsView.swift in Sources */,
 				DD1EA21E28EEE4BD00128FF6 /* SchemeView.swift in Sources */,
+				DD9792FD2906BE0300F8695D /* CustomColors.swift in Sources */,
 				DD1EA22528EEF28F00128FF6 /* SchemeBlockView.swift in Sources */,
+				DD9793122906BEA400F8695D /* KeyView.swift in Sources */,
+				DD97930E2906BE8900F8695D /* YaxisView.swift in Sources */,
 				DDC3754128DDD1D1005A5EE2 /* HeaderView.swift in Sources */,
+				DD9793022906BE2100F8695D /* KaplanModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,8 @@ struct ReliabilityInASDUApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentViewLROne(viewModel: ContentViewModelLROne())
-            ContentViewLRTwo()
+//            ContentViewLRTwo()
+            ContentViewLRThree()
         }
     }
 }

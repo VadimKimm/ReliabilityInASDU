@@ -36,4 +36,11 @@ extension String {
 
         return (base, power)
     }
+
+    func convertToArray() -> [Double] {
+        guard self.count > 0 else { return [] }
+        let stringArray = self.components(separatedBy: " ")
+        let result = stringArray.map { Double($0) ?? 0.0 }
+        return result
+    }
 }

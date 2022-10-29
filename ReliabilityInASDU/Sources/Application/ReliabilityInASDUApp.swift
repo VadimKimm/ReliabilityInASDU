@@ -13,7 +13,8 @@ struct ReliabilityInASDUApp: App {
         WindowGroup {
 //            ContentViewLROne(viewModel: ContentViewModelLROne())
 //            ContentViewLRTwo()
-            ContentViewLRThree()
+//            ContentViewLRThree()
+            ContentViewLRFour()
         }
     }
 }

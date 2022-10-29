@@ -20,6 +20,9 @@
 		DD42011F28D4DD03007BB9E6 /* blankData.json in Resources */ = {isa = PBXBuildFile; fileRef = DD42011E28D4DD03007BB9E6 /* blankData.json */; };
 		DD42012128D4E010007BB9E6 /* TabButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD42012028D4E010007BB9E6 /* TabButtonView.swift */; };
 		DD42012328D4F41B007BB9E6 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD42012228D4F41B007BB9E6 /* String+Ext.swift */; };
+		DD4DA6E429081BD800ECA0D0 /* ContentViewLRFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DA6E329081BD800ECA0D0 /* ContentViewLRFour.swift */; };
+		DD94FE0E290D520A009E07D7 /* JMChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD94FE0D290D520A009E07D7 /* JMChartView.swift */; };
+		DD94FE11290D53BA009E07D7 /* JMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD94FE10290D53BA009E07D7 /* JMModel.swift */; };
 		DD9792FD2906BE0300F8695D /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9792FC2906BE0300F8695D /* CustomColors.swift */; };
 		DD9793002906BE1600F8695D /* AxisParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9792FF2906BE1600F8695D /* AxisParameters.swift */; };
 		DD9793022906BE2100F8695D /* KaplanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9793012906BE2100F8695D /* KaplanModel.swift */; };
@@ -57,6 +60,9 @@
 		DD42011E28D4DD03007BB9E6 /* blankData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = blankData.json; sourceTree = "<group>"; };
 		DD42012028D4E010007BB9E6 /* TabButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButtonView.swift; sourceTree = "<group>"; };
 		DD42012228D4F41B007BB9E6 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		DD4DA6E329081BD800ECA0D0 /* ContentViewLRFour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewLRFour.swift; sourceTree = "<group>"; };
+		DD94FE0D290D520A009E07D7 /* JMChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMChartView.swift; sourceTree = "<group>"; };
+		DD94FE10290D53BA009E07D7 /* JMModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMModel.swift; sourceTree = "<group>"; };
 		DD9792FC2906BE0300F8695D /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		DD9792FF2906BE1600F8695D /* AxisParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxisParameters.swift; sourceTree = "<group>"; };
 		DD9793012906BE2100F8695D /* KaplanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaplanModel.swift; sourceTree = "<group>"; };
@@ -140,6 +146,32 @@
 				DD315E3628EECEDF009A5F9D /* ContentViewLRTwo.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		DD4DA6E129081BAB00ECA0D0 /* LRFour */ = {
+			isa = PBXGroup;
+			children = (
+				DD94FE0F290D53AB009E07D7 /* Model */,
+				DD4DA6E229081BBF00ECA0D0 /* View */,
+			);
+			path = LRFour;
+			sourceTree = "<group>";
+		};
+		DD4DA6E229081BBF00ECA0D0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DD4DA6E329081BD800ECA0D0 /* ContentViewLRFour.swift */,
+				DD94FE0D290D520A009E07D7 /* JMChartView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DD94FE0F290D53AB009E07D7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DD94FE10290D53BA009E07D7 /* JMModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		DD9792F82906BDE600F8695D /* LRThree */ = {
@@ -303,6 +335,7 @@
 				DDF6E3E528CFB9BE00E72250 /* LROne */,
 				DD315E3228EECE91009A5F9D /* LRTwo */,
 				DD9792F82906BDE600F8695D /* LRThree */,
+				DD4DA6E129081BAB00ECA0D0 /* LRFour */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -416,7 +449,9 @@
 				DD42012128D4E010007BB9E6 /* TabButtonView.swift in Sources */,
 				DD1EA23228EF36E400128FF6 /* Double+Ext.swift in Sources */,
 				DDCD765B28CFBCD100F637CE /* IntensityMistakes.swift in Sources */,
+				DD94FE11290D53BA009E07D7 /* JMModel.swift in Sources */,
 				DDC3754528DDE833005A5EE2 /* ContentViewModelLROne.swift in Sources */,
+				DD94FE0E290D520A009E07D7 /* JMChartView.swift in Sources */,
 				DDCD765E28CFBD1800F637CE /* ParseData.swift in Sources */,
 				DD9793082906BE5F00F8695D /* LineChartView.swift in Sources */,
 				DD1EA22C28EF072200128FF6 /* Date+Ext.swift in Sources */,
@@ -426,6 +461,7 @@
 				DD9792FD2906BE0300F8695D /* CustomColors.swift in Sources */,
 				DD1EA22528EEF28F00128FF6 /* SchemeBlockView.swift in Sources */,
 				DD9793122906BEA400F8695D /* KeyView.swift in Sources */,
+				DD4DA6E429081BD800ECA0D0 /* ContentViewLRFour.swift in Sources */,
 				DD97930E2906BE8900F8695D /* YaxisView.swift in Sources */,
 				DDC3754128DDD1D1005A5EE2 /* HeaderView.swift in Sources */,
 				DD9793022906BE2100F8695D /* KaplanModel.swift in Sources */,

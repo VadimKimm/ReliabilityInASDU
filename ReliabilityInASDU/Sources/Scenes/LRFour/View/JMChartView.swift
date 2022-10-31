@@ -6,40 +6,93 @@
 //
 
 import SwiftUI
+import SwiftUICharts
+import OrderedCollections
 
 struct JMChartView: View {
 
     @Binding var isVisible: Bool
-    @State var data: [KaplanModel]? = nil
+    @State var rawData: OrderedDictionary<Double, Double>? = nil
+
+    private var yAxisLabels: LineChartData {
+        var dataPoints = [LineChartDataPoint]()
+
+        for i in 0...10 {
+            dataPoints.append(LineChartDataPoint(value: Double(i / 10)))
+        }
+
+//        dataPoints.append(contentsOf: createData())
+
+        let grid = LineChartData(dataSets: LineDataSet(dataPoints: dataPoints))
+        return grid
+    }
+
+    private var numberFormatter: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.generatesDecimalNumbers = true
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = 1
+        formatter.maximumFractionDigits = 1
+        return formatter
+    }
 
     var body: some View {
         VStack {
-            VStack {
-                ZStack(alignment: .topLeading) {
-                    Color(red: 208/255, green: 225/255, blue: 242/255, opacity: 0.4)
-                        .edgesIgnoringSafeArea(.all)
-
-                    ZStack {
-                        LineChartView(
-                            title: "АНАЛИЗ ВЫЖИВАЕМОСТИ",
-                            chartData: LineChartData(
-                                keys: ["S(t)", "S(t)-", "S(t)+"],
-                                data: data ?? [KaplanModel(name: "0",
-                                                           values: [0.0, 0.0, 0.0])]))
-                    }
+            ZStack {
+                if let data = createData() {
+                    LineChart(chartData: data)
+//                        .pointMarkers(chartData: data)
+                        .xAxisGrid(chartData: data)
+                        .yAxisGrid(chartData: data)
+                        .xAxisLabels(chartData: data)
+                        .yAxisLabels(chartData: data,
+                                     formatter: numberFormatter)
+                        .legends(chartData: data)
                 }
-                .frame(width: 900, height: 700)
             }
+            .padding(.all)
 
             Button("Cancel") {
                 isVisible.toggle()
             }
         }
+        .frame(width: 900, height: 700)
     }
 }
 
 struct JMChartView_Previews: PreviewProvider {
     static var previews: some View {
         JMChartView(isVisible: .constant(true))
+    }
+}
+
+
+extension JMChartView {
+    func createData() -> LineChartData {
+        var dataPoints = [LineChartDataPoint]()
+
+        guard let dataForChart = rawData
+        else {
+            return LineChartData(dataSets: LineDataSet(dataPoints: dataPoints))
+        }
+
+        for (key, value) in dataForChart {
+            dataPoints.append(LineChartDataPoint(value: value,
+                                                 xAxisLabel: String(key)))
+            print(key, value)
+        }
+
+        let dataSet = LineDataSet(dataPoints: dataPoints,
+                               legendTitle: "График надежности",
+                               pointStyle: PointStyle(),
+                               style: LineStyle(lineColour: ColourStyle(colour: .red),
+                                                lineType: .line))
+
+        let chartStyle = LineChartStyle(baseline: .minimumWithMaximum(of: 0))
+
+        let chartData = LineChartData(dataSets: dataSet,
+                                      chartStyle: chartStyle)
+
+        return chartData
     }
 }

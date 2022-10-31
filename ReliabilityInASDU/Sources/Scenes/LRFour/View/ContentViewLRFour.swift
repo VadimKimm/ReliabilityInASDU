@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import OrderedCollections
+import Collections
 
 struct ContentViewLRFour: View {
 
@@ -20,12 +22,14 @@ struct ContentViewLRFour: View {
     @State var x: String = "1 2 3" //интервалы времени между отказами
     @State var T: String = "10" //продолжительность тестирования
     @State var jmResult: String = "" //продолжительность тестирования
+    @State var dataForChart: OrderedDictionary<Double, Double>? = nil
 
     @State private var showingSheet = false
 
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
+                //Боковое меню
             }
             .frame(width: 80)
             .padding(.top, 40)
@@ -52,7 +56,6 @@ struct ContentViewLRFour: View {
                         }
 
                         VStack {
-//                            Text("𝐾 – предполагаемое количество ошибок в программе")
                             Text("𝐾 – число обнаруженных естесственных ошибок")
                             TextField("", text: $K)
                                 .frame(width: 100)
@@ -127,7 +130,8 @@ struct ContentViewLRFour: View {
                         showingSheet.toggle()
                     }
                     .sheet(isPresented: $showingSheet) {
-                        JMChartView(isVisible: $showingSheet)
+                        JMChartView(isVisible: $showingSheet,
+                                    rawData: dataForChart)
                     }
                 }
 
@@ -177,11 +181,10 @@ extension ContentViewLRFour {
 //J-M functions
 extension ContentViewLRFour {
     func calculateJM() {
-//        var lyambda = [Double]()
         let array = x.convertToArray()
         let K = Double(m) ?? 1.0
         let N = Double(N) ?? 1.0
-        let T = Double(T) ?? 1.0
+//        let T = Double(T) ?? 1.0
         var P = [String]()
 
         let B = calculateB(array: array)
@@ -189,18 +192,8 @@ extension ContentViewLRFour {
         let Q = calculateQ(B: B, A: A, K: K)
         let C = calculateC(K: K, A: A, Q: Q, N: N)
 
-//        for (i, time) in array.enumerated() {
-//            let lyambdaValue = C * (N - Double(i + 1) + 1)
-//            var pValue = lyambdaValue * exp(-lyambdaValue * time)
-//
-//            if pValue > 1 {
-//                pValue = 1
-//            } else if pValue <= 0 {
-//                pValue = 0
-//            }
-//
-//            P.append(String(format: "%.2f", pValue))
-//        }
+        var valuesForChart: Deque<Double> = []
+        var keysForChart: Deque<Double> = []
 
         for (_, time) in array.enumerated() {
             var pValue = exp(-(N - K) * C * time)
@@ -211,8 +204,18 @@ extension ContentViewLRFour {
                 pValue = 0
             }
 
+            keysForChart.append(time)
+            valuesForChart.append(pValue)
+
             P.append(String(format: "%.2f", pValue))
         }
+
+        valuesForChart.reverse()
+        valuesForChart.prepend(1)
+        keysForChart.prepend(0)
+        dataForChart = OrderedDictionary(uniqueKeysWithValues: zip(keysForChart,
+                                                            valuesForChart))
+
 
         let result = P.reversed().joined(separator: " ")
         jmResult = result

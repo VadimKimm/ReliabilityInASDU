@@ -10,7 +10,7 @@ import SwiftUI
 struct LineChartView: View {
 
     var title: String
-    var chartData: LineChartData
+    var chartData: KaplanLineChartData
 
     let isShowingKey = true
 

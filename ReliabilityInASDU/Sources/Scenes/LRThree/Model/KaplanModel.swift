@@ -13,7 +13,7 @@ struct KaplanModel: Identifiable {
     let values: [Double]
 }
 
-struct LineChartData {
+struct KaplanLineChartData {
     let keys: [String]
     let data: [KaplanModel]
 }

@@ -17,6 +17,9 @@
 		DD1EA23028EF13B400128FF6 /* SchemeObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1EA22F28EF13B400128FF6 /* SchemeObservable.swift */; };
 		DD1EA23228EF36E400128FF6 /* Double+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1EA23128EF36E400128FF6 /* Double+Ext.swift */; };
 		DD315E3728EECEDF009A5F9D /* ContentViewLRTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD315E3628EECEDF009A5F9D /* ContentViewLRTwo.swift */; };
+		DD35B2A029102D72007DC978 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = DD35B29F29102D72007DC978 /* SwiftUICharts */; };
+		DD35B2A629104496007DC978 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = DD35B2A529104496007DC978 /* Collections */; };
+		DD35B2A829104496007DC978 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = DD35B2A729104496007DC978 /* OrderedCollections */; };
 		DD42011F28D4DD03007BB9E6 /* blankData.json in Resources */ = {isa = PBXBuildFile; fileRef = DD42011E28D4DD03007BB9E6 /* blankData.json */; };
 		DD42012128D4E010007BB9E6 /* TabButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD42012028D4E010007BB9E6 /* TabButtonView.swift */; };
 		DD42012328D4F41B007BB9E6 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD42012228D4F41B007BB9E6 /* String+Ext.swift */; };
@@ -93,6 +96,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD35B2A629104496007DC978 /* Collections in Frameworks */,
+				DD35B2A029102D72007DC978 /* SwiftUICharts in Frameworks */,
+				DD35B2A829104496007DC978 /* OrderedCollections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +382,11 @@
 			dependencies = (
 			);
 			name = ReliabilityInASDU;
+			packageProductDependencies = (
+				DD35B29F29102D72007DC978 /* SwiftUICharts */,
+				DD35B2A529104496007DC978 /* Collections */,
+				DD35B2A729104496007DC978 /* OrderedCollections */,
+			);
 			productName = ReliabilityInASDU;
 			productReference = DDF6E3CF28CFB6C600E72250 /* ReliabilityInASDU.app */;
 			productType = "com.apple.product-type.application";
@@ -404,6 +415,10 @@
 				Base,
 			);
 			mainGroup = DDF6E3C628CFB6C600E72250;
+			packageReferences = (
+				DD35B29E29102D72007DC978 /* XCRemoteSwiftPackageReference "SwiftUICharts" */,
+				DD35B2A429104496007DC978 /* XCRemoteSwiftPackageReference "swift-collections" */,
+			);
 			productRefGroup = DDF6E3D028CFB6C600E72250 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -666,6 +681,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DD35B29E29102D72007DC978 /* XCRemoteSwiftPackageReference "SwiftUICharts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/willdale/SwiftUICharts#Ranged-Line-Chart";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		DD35B2A429104496007DC978 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DD35B29F29102D72007DC978 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD35B29E29102D72007DC978 /* XCRemoteSwiftPackageReference "SwiftUICharts" */;
+			productName = SwiftUICharts;
+		};
+		DD35B2A529104496007DC978 /* Collections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD35B2A429104496007DC978 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = Collections;
+		};
+		DD35B2A729104496007DC978 /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD35B2A429104496007DC978 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DDF6E3C728CFB6C600E72250 /* Project object */;
 }

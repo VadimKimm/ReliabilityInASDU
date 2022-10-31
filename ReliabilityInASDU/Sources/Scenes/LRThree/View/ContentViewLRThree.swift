@@ -38,7 +38,7 @@ struct ContentViewLRThree: View {
                     ZStack {
                         LineChartView(
                             title: "АНАЛИЗ ВЫЖИВАЕМОСТИ",
-                            chartData: LineChartData(
+                            chartData: KaplanLineChartData(
                                 keys: ["S(t)", "S(t)-", "S(t)+"],
                                 data: data ?? [KaplanModel(name: "0",
                                                            values: [0.0, 0.0, 0.0])]))

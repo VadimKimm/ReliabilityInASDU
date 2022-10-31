@@ -14,28 +14,6 @@ struct JMChartView: View {
     @Binding var isVisible: Bool
     @State var rawData: OrderedDictionary<Double, Double>? = nil
 
-    private var yAxisLabels: LineChartData {
-        var dataPoints = [LineChartDataPoint]()
-
-        for i in 0...10 {
-            dataPoints.append(LineChartDataPoint(value: Double(i / 10)))
-        }
-
-//        dataPoints.append(contentsOf: createData())
-
-        let grid = LineChartData(dataSets: LineDataSet(dataPoints: dataPoints))
-        return grid
-    }
-
-    private var numberFormatter: NumberFormatter {
-        let formatter = NumberFormatter()
-        formatter.generatesDecimalNumbers = true
-        formatter.numberStyle = .decimal
-        formatter.minimumFractionDigits = 1
-        formatter.maximumFractionDigits = 1
-        return formatter
-    }
-
     var body: some View {
         VStack {
             ZStack {
@@ -55,6 +33,7 @@ struct JMChartView: View {
             Button("Cancel") {
                 isVisible.toggle()
             }
+            .padding(.all)
         }
         .frame(width: 900, height: 700)
     }
@@ -68,6 +47,16 @@ struct JMChartView_Previews: PreviewProvider {
 
 
 extension JMChartView {
+
+    private var numberFormatter: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.generatesDecimalNumbers = true
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = 1
+        formatter.maximumFractionDigits = 1
+        return formatter
+    }
+
     func createData() -> LineChartData {
         var dataPoints = [LineChartDataPoint]()
 
@@ -88,7 +77,8 @@ extension JMChartView {
                                style: LineStyle(lineColour: ColourStyle(colour: .red),
                                                 lineType: .line))
 
-        let chartStyle = LineChartStyle(baseline: .minimumWithMaximum(of: 0))
+        let chartStyle = LineChartStyle(baseline: .minimumWithMaximum(of: 0),
+                                        topLine: .maximum(of: 1.1))
 
         let chartData = LineChartData(dataSets: dataSet,
                                       chartStyle: chartStyle)

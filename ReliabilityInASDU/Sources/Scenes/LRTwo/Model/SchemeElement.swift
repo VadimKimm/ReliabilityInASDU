@@ -12,10 +12,24 @@ struct SchemeElement: Identifiable {
     var title: String
     var timeToFailure: String
     var intensityMistakes: String
-//    {
-//        get {
-//            return String(1 / (Double(timeToFailure) ?? 1))
-//        }
-//    }
     var installationDate: Date
+    var dateToReplacement: Date?
+
+    var _timeToFailure: String {
+        get {
+            timeToFailure
+        } set {
+            timeToFailure = newValue
+            intensityMistakes = String(1.0 / (Double(newValue) ?? 10))
+        }
+    }
+
+    var _intensityMistakes: String {
+        get {
+            intensityMistakes
+        } set {
+            intensityMistakes = newValue
+            timeToFailure = String(1.0 / (Double(newValue) ?? 10))
+        }
+    }
 }

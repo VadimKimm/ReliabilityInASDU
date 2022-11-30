@@ -68,14 +68,13 @@ extension JMChartView {
         for (key, value) in dataForChart {
             dataPoints.append(LineChartDataPoint(value: value,
                                                  xAxisLabel: String(key)))
-            print(key, value)
         }
 
         let dataSet = LineDataSet(dataPoints: dataPoints,
                                legendTitle: "График надежности",
                                pointStyle: PointStyle(),
                                style: LineStyle(lineColour: ColourStyle(colour: .red),
-                                                lineType: .line))
+                                                lineType: .curvedLine))
 
         let chartStyle = LineChartStyle(baseline: .minimumWithMaximum(of: 0),
                                         topLine: .maximum(of: 1.1))

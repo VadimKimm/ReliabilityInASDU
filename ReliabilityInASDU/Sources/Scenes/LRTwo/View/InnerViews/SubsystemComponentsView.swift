@@ -1,5 +1,5 @@
 //
-//  SchemeComponentsView.swift
+//  SubsystemComponentsView.swift
 //  ReliabilityInASDU
 //
 //  Created by Vadim Kim on 06.10.2022.
@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct SchemeComponentsView: View {
+struct SubsystemComponentsView: View {
 
-    @Binding var block: [SchemeElement]
+    @Binding var subsystem: SubsystemBlock
 
     var body: some View {
         VStack {
-            List(block) { element in
+            List(subsystem.elements) { element in
                 VStack(alignment: .leading) {
                     Text(element.title)
                     Text("Дата установки: \(element.installationDate.convertToString())")
@@ -26,6 +26,6 @@ struct SchemeComponentsView: View {
 
 struct SchemeComponentsView_Previews: PreviewProvider {
     static var previews: some View {
-        SchemeComponentsView(block: .constant(SchemeBlockType.thirdType.block))
+        SubsystemComponentsView(subsystem: .constant(SubsystemBlock(type: .firstType)))
     }
 }

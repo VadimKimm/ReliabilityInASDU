@@ -14,7 +14,8 @@ struct ReliabilityInASDUApp: App {
 //            ContentViewLROne(viewModel: ContentViewModelLROne())
 //            ContentViewLRTwo()
 //            ContentViewLRThree()
-            ContentViewLRFour()
+//            ContentViewLRFour()
+            NewContentViewLRTwo()
         }
     }
 }

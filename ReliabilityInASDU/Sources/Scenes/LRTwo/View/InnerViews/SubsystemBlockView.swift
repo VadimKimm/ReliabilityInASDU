@@ -7,19 +7,18 @@
 
 import SwiftUI
 
-struct SchemeBlockView: View {
+struct SubsystemBlockView: View {
 
     var imageName: String
-    var action: () -> Void
+    @Binding var isVisible: Bool
 
     var body: some View {
         VStack {
             Image(imageName)
 
-            Button("Редактирование подсистемы") {
-                action()
+            Button("Редактировать эелементы") {
+                isVisible = true
             }
-            .buttonStyle(.bordered)
             .padding(.bottom, 8)
         }
     }
@@ -27,6 +26,6 @@ struct SchemeBlockView: View {
 
 struct SchemeBlockView_Previews: PreviewProvider {
     static var previews: some View {
-        SchemeBlockView(imageName: "blockFirstType", action: { print("123") })
+        SubsystemBlockView(imageName: "blockFirstType", isVisible: .constant(true))
     }
 }

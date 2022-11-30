@@ -1,5 +1,5 @@
 //
-//  SchemeBlockType.swift
+//  SubsystemBlockType.swift
 //  ReliabilityInASDU
 //
 //  Created by Vadim Kim on 06.10.2022.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-enum SchemeBlockType: String, Identifiable, CaseIterable {
-    case empty = "_"
+enum SubsystemBlockType: String, Identifiable, CaseIterable {
+//    case empty = "_"
     case firstType = "Тип 1"
     case secondType = "Тип 2"
     case thirdType = "Тип 3"
@@ -20,8 +20,8 @@ enum SchemeBlockType: String, Identifiable, CaseIterable {
 
     var block: [SchemeElement] {
         switch self {
-        case .empty:
-            return [SchemeElement]()
+//        case .empty:
+//            return [SchemeElement]()
         case .firstType:
             return createFirstTypeBlock()
         case .secondType:
@@ -33,13 +33,14 @@ enum SchemeBlockType: String, Identifiable, CaseIterable {
 
         }
     }
+    
 }
 
-extension SchemeBlockType {
+extension SubsystemBlockType {
     func createFirstTypeBlock() -> [SchemeElement] {
         let block = [SchemeElement(title: "Первый элемент",
-                                   timeToFailure: "10",
-                                   intensityMistakes: "1e-1",
+                                   timeToFailure: "10000",
+                                   intensityMistakes: "1e-4",
                                    installationDate: .now)]
 
         return block
@@ -48,8 +49,8 @@ extension SchemeBlockType {
     func createSecondTypeBlock() -> [SchemeElement] {
         var block = createFirstTypeBlock()
         block.append(SchemeElement(title: "Второй элемент",
-                                   timeToFailure: "10",
-                                   intensityMistakes: "1e-1",
+                                   timeToFailure: "10000",
+                                   intensityMistakes: "1e-4",
                                    installationDate: .now))
 
         return block
@@ -58,8 +59,8 @@ extension SchemeBlockType {
     func createThirdTypeBlock() -> [SchemeElement] {
         var block = createSecondTypeBlock()
         block.append(SchemeElement(title: "Третий элемент",
-                                   timeToFailure: "10",
-                                   intensityMistakes: "1e-1",
+                                   timeToFailure: "10000",
+                                   intensityMistakes: "1e-4",
                                    installationDate: .now))
 
         return block
@@ -68,8 +69,8 @@ extension SchemeBlockType {
     func createFourthTypeBlock() -> [SchemeElement] {
         var block = createThirdTypeBlock()
         block.append(SchemeElement(title: "Четвертый элемент",
-                                   timeToFailure: "10",
-                                   intensityMistakes: "1e-1",
+                                   timeToFailure: "10000",
+                                   intensityMistakes: "1e-4",
                                    installationDate: .now))
 
         return block

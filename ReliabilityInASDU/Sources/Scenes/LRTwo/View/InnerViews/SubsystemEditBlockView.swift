@@ -1,5 +1,5 @@
 //
-//  SchemeEditBlockView.swift
+//  SubsystemEditBlockView.swift
 //  ReliabilityInASDU
 //
 //  Created by Vadim Kim on 06.10.2022.
@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-struct SchemeEditBlockView: View {
+struct SubsystemEditBlockView: View {
     
     @Binding var isVisible: Bool
-    @Binding var block: [SchemeElement]
+    @Binding var subsystem: SubsystemBlock
 
     var body: some View {
         VStack {
-            Text(block.isEmpty ? "Нет элементов" : "Редактирование элементов")
+            Text(subsystem.elements.isEmpty ? "Нет элементов" : "Редактирование элементов")
 
             HStack {
-                ForEach($block) { element in
+                ForEach($subsystem.elements) { element in
                     VStack {
                         HStack {
                             Text("Наименование:")
@@ -26,15 +26,14 @@ struct SchemeEditBlockView: View {
                         .padding([.horizontal, .top])
 
                         HStack {
-                            Text("Нараб. на отказ:")
-                            TextField("", text: element.timeToFailure)
+                            Text("Нараб. на отказ, ч:")
+                            TextField("", text: element._timeToFailure)
                         }
                         .padding(.horizontal)
 
                         HStack {
-                            Text("Интенсив. отказов:")
-                            TextField("", text: element.intensityMistakes)
-//                            Text("\(element.intensityMistakes)")
+                            Text("Интенс. отказов, 1/ч:")
+                            TextField("", text: element._intensityMistakes)
                         }
                         .padding(.horizontal)
 
@@ -47,13 +46,13 @@ struct SchemeEditBlockView: View {
 
                     }
                 }
-                .frame(width: 300)
+                .frame(width: 310)
                 .border(.white)
             }
 
             Spacer()
             
-            Button("Cancel") {
+            Button("Подтвердить") {
                 isVisible = false
             }
         }

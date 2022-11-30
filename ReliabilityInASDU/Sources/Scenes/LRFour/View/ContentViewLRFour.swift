@@ -20,7 +20,7 @@ struct ContentViewLRFour: View {
     @State var m: String = "3" //число обнаруженных отказов между тестированием
     @State var N: String = "4" //число ошибок, первоначально присутствующих в программе
     @State var x: String = "1 2 3" //интервалы времени между отказами
-    @State var T: String = "10" //продолжительность тестирования
+//    @State var T: String = "10" //продолжительность тестирования
     @State var jmResult: String = "" //продолжительность тестирования
     @State var dataForChart: OrderedDictionary<Double, Double>? = nil
 
@@ -106,12 +106,12 @@ struct ContentViewLRFour: View {
                                 .foregroundColor(S.isNumeric ? .white : .red)
                         }
 
-                        VStack {
-                            Text("T - продолжительность тестиррования")
-                            TextField("", text: $T)
-                                .frame(width: 50)
-                                .foregroundColor(S.isNumeric ? .white : .red)
-                        }
+//                        VStack {
+//                            Text("T - продолжительность тестиррования")
+//                            TextField("", text: $T)
+//                                .frame(width: 50)
+//                                .foregroundColor(S.isNumeric ? .white : .red)
+//                        }
                     }
                     .font(.title3)
 
@@ -211,11 +211,10 @@ extension ContentViewLRFour {
         }
 
         valuesForChart.reverse()
-        valuesForChart.prepend(1)
-        keysForChart.prepend(0)
+//        valuesForChart.prepend(1)
+//        keysForChart.prepend(0)
         dataForChart = OrderedDictionary(uniqueKeysWithValues: zip(keysForChart,
                                                             valuesForChart))
-
 
         let result = P.reversed().joined(separator: " ")
         jmResult = result

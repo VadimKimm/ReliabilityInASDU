@@ -13,4 +13,12 @@ extension Date {
         dateFormatter.dateFormat = "dd/MM/YYYY"
         return dateFormatter.string(from: self)
     }
+
+    func convertToExtendedString() -> String {
+        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "dd/MM/YYYY"
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
+        return dateFormatter.string(from: self)
+    }
 }

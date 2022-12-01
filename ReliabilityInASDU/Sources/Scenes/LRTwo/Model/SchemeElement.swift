@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import OrderedCollections
+import SwiftUI
 
 struct SchemeElement: Identifiable {
     var id = UUID()
@@ -13,7 +15,9 @@ struct SchemeElement: Identifiable {
     var timeToFailure: String
     var intensityMistakes: String
     var installationDate: Date
+    var requiredReliability: Double?
     var dateToReplacement: Date?
+    var dataForChart: OrderedDictionary<String, String>?
 
     var _timeToFailure: String {
         get {

@@ -9,8 +9,9 @@ import SwiftUI
 
 struct ReplacementPlanView: View {
 
-    @Binding var isVisible: Bool
     var subsystems: [SubsystemBlock]
+    @Binding var isVisible: Bool
+    @State var isChartVisible = false
 
     var body: some View {
         VStack {
@@ -31,7 +32,15 @@ struct ReplacementPlanView: View {
                                     Text(element.title)
                                         .bold()
                                     Text("Дата установки: \(element.installationDate.convertToString())")
-                                    Text("Дата замены: \(element.dateToReplacement?.convertToString() ?? Date().convertToString())")
+                                    Text("Дата замены: \(element.dateToReplacement?.convertToExtendedString() ?? Date().convertToExtendedString())")
+                                    Text("Требуемая надежность \(String(format: "%.3f", element.requiredReliability ?? 1))")
+                                    Button("График надежности") {
+                                        isChartVisible.toggle()
+                                    }
+                                    .sheet(isPresented: $isChartVisible) {
+                                        ElementChartView(isVisible: $isChartVisible,
+                                                         rawData: element.dataForChart)
+                                    }
                                 }
                                 .padding()
                             }
@@ -49,11 +58,5 @@ struct ReplacementPlanView: View {
             }
         }
         .padding()
-    }
-}
-
-struct ReplacementPlanView_Previews: PreviewProvider {
-    static var previews: some View {
-        ReplacementPlanView(isVisible: .constant(true), subsystems: [SubsystemBlock(type: .firstType)])
     }
 }

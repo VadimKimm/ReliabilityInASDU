@@ -6,24 +6,20 @@
 //
 
 import SwiftUI
+import OrderedCollections
+import Collections
 
 struct ContentViewLRTwo: View {
     
+    @Binding var selectedView: Int
     @State var subsystems = [SubsystemBlock]()
     @State private var targetReliabilityFactor = "0.95"
     @State private var showAlert = false
     @State private var alertMessage = ""
     @State private var showReplacementPlan = false
-    @Binding var selectedView: Int
 
     var body: some View {
         HStack {
-            VStack(alignment: .leading) {
-
-            }
-            .frame(width: 80)
-            .padding(.top, 40)
-
             VStack {
                 //Верхний стэк
                 VStack {
@@ -63,8 +59,7 @@ struct ContentViewLRTwo: View {
                     .frame(width: 730, height: 440)
                     .border(.white)
                     .sheet(isPresented: $showReplacementPlan) {
-                        ReplacementPlanView(isVisible: $showReplacementPlan,
-                                            subsystems: subsystems)
+                        ReplacementPlanView(subsystems: subsystems, isVisible: $showReplacementPlan)
                     }
                 }
 
@@ -163,13 +158,20 @@ extension ContentViewLRTwo {
 
             let timeToReplacement = calculateTimeToReplacementForElements(subsystem, arrayOfPi: arrayOfPi)
             let dateToReplacement = calculateDateToReplacementForElements(subsystem, timeStamp: timeToReplacement)
-            for (index, time) in timeToReplacement.enumerated() {
-                print("Требуемая надежность элемента \(index + 1) - \(arrayOfPi[index])")
-                print("Время до замены элемента \(index + 1) - \(time)")
-                print("Дата замены элемента \(index + 1) - \(dateToReplacement[index].convertToString())")
-                subsystem.elements[index].dateToReplacement = dateToReplacement[index]
-            }
+            let chartData = createChartDataForElements(subsystem, timeToReplacement: timeToReplacement)
 
+            for (index, time) in timeToReplacement.enumerated() {
+//                print("Требуемая надежность элемента \(index + 1) - \(arrayOfPi[index])")
+                print("Время до замены элемента \(index + 1) - \(time)")
+//                print("Дата замены элемента \(index + 1) - \(dateToReplacement[index].convertToString())")
+
+//                let chartData = createChartDataForElement(for: time,
+//                                                          intensityMistakes: Double(subsystem.elements[index].intensityMistakes) ?? 0.01,
+//                                                          installationDate: subsystem.elements[index].installationDate)
+                subsystem.elements[index].dateToReplacement = dateToReplacement[index]
+                subsystem.elements[index].dataForChart = chartData[index]
+                subsystem.elements[index].requiredReliability = arrayOfPi[index]
+            }
         }
 
         print("--------------------------------\n\n")
@@ -233,4 +235,56 @@ extension ContentViewLRTwo {
 
         return result
     }
+
+    func createChartDataForElements(_ subsystem: SubsystemBlock,
+                                    timeToReplacement: [Double]) -> [OrderedDictionary<String, String>] {
+        var result = [OrderedDictionary<String, String>]()
+
+        for (index, element) in subsystem.elements.enumerated() {
+            var valuesForChart: Deque<String> = []
+            var keysForChart: Deque<String> = []
+            let step = timeToReplacement[index] / 8
+
+            for t in stride(from: 0, to: timeToReplacement[index] + 2 * step, by: step) {
+                let P = exp(-(Double(element.intensityMistakes) ?? 0.1 ) * Double(t))
+                let installationDate = element.installationDate
+                var dateComponents = DateComponents()
+                dateComponents.hour = Int(t)
+                let date = Calendar.current.date(byAdding: dateComponents, to: installationDate) ?? Date()
+
+                valuesForChart.append(String(P))
+                keysForChart.append(date.convertToExtendedString())
+            }
+
+            result.append(OrderedDictionary(uniqueKeysWithValues: zip(keysForChart, valuesForChart)))
+        }
+
+        return result
+    }
+
+//    func createChartDataForElement(for time: Double,
+//                                   intensityMistakes: Double,
+//                                   installationDate: Date) -> OrderedDictionary<String, String> {
+//        var dataForChart = OrderedDictionary<String, String>()
+//        var valuesForChart: Deque<String> = []
+//        var keysForChart: Deque<String> = []
+//
+//        let step = time / 8
+//
+//        for t in stride(from: 0, to: time + 2 * step, by: step) {
+//            let P = exp(-intensityMistakes * Double(t))
+//            let installationDate = installationDate
+//            var dateComponents = DateComponents()
+//            dateComponents.hour = Int(t)
+//            let date = Calendar.current.date(byAdding: dateComponents, to: installationDate) ?? Date()
+//
+//            valuesForChart.append(String(P))
+//            keysForChart.append(date.convertToExtendedString())
+//            print(P, t)
+//        }
+//        print(exp(-intensityMistakes * time))
+//
+//        dataForChart = OrderedDictionary(uniqueKeysWithValues: zip(keysForChart, valuesForChart))
+//        return dataForChart
+//    }
 }

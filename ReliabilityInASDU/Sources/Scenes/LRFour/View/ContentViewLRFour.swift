@@ -224,8 +224,7 @@ extension ContentViewLRFour {
         valuesForChart.reverse()
 //        valuesForChart.prepend(1)
 //        keysForChart.prepend(0)
-        dataForChart = OrderedDictionary(uniqueKeysWithValues: zip(keysForChart,
-                                                            valuesForChart))
+        dataForChart = OrderedDictionary(uniqueKeysWithValues: zip(keysForChart, valuesForChart))
 
         let result = P.reversed().joined(separator: " ")
         jmResult = result

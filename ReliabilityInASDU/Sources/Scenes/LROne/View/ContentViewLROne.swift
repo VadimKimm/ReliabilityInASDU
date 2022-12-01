@@ -18,31 +18,6 @@ struct ContentViewLROne: View {
 
     var body: some View {
         HStack {
-            VStack(alignment: .leading) {
-                TabButtonView(image: "plus",
-                              title: "Add",
-                              action: { addButtonPressed() })
-                .padding(.leading, 20)
-
-                TabButtonView(image: "square.and.arrow.down",
-                              title: "Save",
-                              action: { saveButtonPressed() })
-                .padding(.leading, 20)
-
-                TabButtonView(image: "equal",
-                              title: "Compute",
-                              action: { computeButtonPressed() })
-                .padding(.leading, 20)
-
-                TextField("", text: $result)
-                    .frame(width: 70)
-                    .padding(.leading, 20)
-
-                Spacer()
-            }
-            .frame(width: 80)
-            .padding(.top, 40)
-
             VStack {
                 HeaderView()
                     .padding(.top, 10)
@@ -87,6 +62,31 @@ struct ContentViewLROne: View {
             .frame(width: 750)
 
             VStack(alignment: .leading) {
+                VStack(alignment: .leading) {
+                    TabButtonView(image: "plus",
+                                  title: "Add",
+                                  action: { addButtonPressed() })
+                    .padding(.leading, 20)
+
+                    TabButtonView(image: "square.and.arrow.down",
+                                  title: "Save",
+                                  action: { saveButtonPressed() })
+                    .padding(.leading, 20)
+
+                    TabButtonView(image: "equal",
+                                  title: "Compute",
+                                  action: { computeButtonPressed() })
+                    .padding(.leading, 20)
+
+                    TextField("", text: $result)
+                        .frame(width: 70)
+                        .padding(.leading, 20)
+
+                    Spacer()
+                }
+                .frame(width: 80)
+                .padding(.top, 40)
+
                 HStack {
                     Text("Pk:   ")
                     TextField("", text: $Pk)

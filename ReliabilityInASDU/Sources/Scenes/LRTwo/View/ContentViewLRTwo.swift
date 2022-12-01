@@ -7,16 +7,17 @@
 
 import SwiftUI
 
-struct NewContentViewLRTwo: View {
+struct ContentViewLRTwo: View {
     
     @State var subsystems = [SubsystemBlock]()
     @State private var targetReliabilityFactor = "0.95"
     @State private var showAlert = false
     @State private var alertMessage = ""
     @State private var showReplacementPlan = false
+    @Binding var selectedView: Int
 
     var body: some View {
-        NavigationView {
+        HStack {
             VStack(alignment: .leading) {
 
             }
@@ -113,18 +114,28 @@ struct NewContentViewLRTwo: View {
             .padding(.trailing, 20)
         }
         .frame(minWidth: 1000, minHeight: 600)
+        .navigationTitle("НАДЕЖНОСТЬ ТЕХНОЛОГИЧЕСКОГО ОБОРУДОВАНИЯ. ПОСТРОЕНИЕ ПЛАНА ЗАМЕНЫ ОБОРУДОВАНИЯ")
+        .toolbar {
+            ToolbarItemGroup(placement: .navigation) {
+                Button {
+                    selectedView = 0
+                } label: {
+                    Image(systemName: "arrow.left").imageScale(.large)
+                }
+            }
+        }
     }
 }
 
-struct NewContentViewLRTwo_Previews: PreviewProvider {
+struct ContentViewLRTwo_Previews: PreviewProvider {
     static var previews: some View {
-        NewContentViewLRTwo()
+        ContentViewLRTwo(selectedView: .constant(0))
     }
 }
 
 // MARK: - Make plan
 
-extension NewContentViewLRTwo {
+extension ContentViewLRTwo {
     func makePlan() {
         guard !subsystems.isEmpty else {
             alertMessage = "Количество подсистем равно 0. Добавьте подсистемы."
@@ -142,12 +153,6 @@ extension NewContentViewLRTwo {
             switch subsystem.type {
             case .firstType:
                 let _ = calculatePForFirstType(Pdesired: Pdesired).map { arrayOfPi.append($0) }
-//                arrayOfPi.append(p)
-//                pForElements.map { arrayOfPi.append($0) }
-//
-//                for p in pForElements {
-//                    arrayOfPi.append(p)
-//                }
             case .secondType:
                 let _ = calculatePForSecondType(Pdesired: Pdesired).map { arrayOfPi.append($0) }
             case .thirdType:

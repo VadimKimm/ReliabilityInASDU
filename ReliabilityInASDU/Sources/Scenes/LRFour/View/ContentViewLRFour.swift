@@ -25,9 +25,10 @@ struct ContentViewLRFour: View {
     @State var dataForChart: OrderedDictionary<Double, Double>? = nil
 
     @State private var showingSheet = false
+    @Binding var selectedView: Int
 
     var body: some View {
-        NavigationView {
+        HStack {
             VStack(alignment: .leading) {
                 //Боковое меню
             }
@@ -140,12 +141,22 @@ struct ContentViewLRFour: View {
             .frame(width: 750)
         }
         .frame(minWidth: 1000, minHeight: 600)
+        .navigationTitle("РАСЧЕТ НАДЕЖНОСТИ ПО")
+        .toolbar {
+            ToolbarItemGroup(placement: .navigation) {
+                Button {
+                    selectedView = 0
+                } label: {
+                    Image(systemName: "arrow.left").imageScale(.large)
+                }
+            }
+        }
     }
 }
 
 struct ContentViewLRFour_Previews: PreviewProvider {
     static var previews: some View {
-        ContentViewLRFour()
+        ContentViewLRFour(selectedView: .constant(0))
     }
 }
 

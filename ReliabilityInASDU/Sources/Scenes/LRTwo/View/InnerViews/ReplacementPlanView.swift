@@ -26,7 +26,7 @@ struct ReplacementPlanView: View {
                             .font(.title2)
                             .bold()
                             .padding()
-                        HStack(spacing: 30) {
+                        VStack(spacing: 30) {
                             ForEach(subsystems[index].elements) { element in
                                 VStack(alignment: .leading) {
                                     Text(element.title)
@@ -34,13 +34,15 @@ struct ReplacementPlanView: View {
                                     Text("Дата установки: \(element.installationDate.convertToString())")
                                     Text("Дата замены: \(element.dateToReplacement?.convertToExtendedString() ?? Date().convertToExtendedString())")
                                     Text("Требуемая надежность \(String(format: "%.3f", element.requiredReliability ?? 1))")
-                                    Button("График надежности") {
-                                        isChartVisible.toggle()
-                                    }
-                                    .sheet(isPresented: $isChartVisible) {
-                                        ElementChartView(isVisible: $isChartVisible,
-                                                         rawData: element.dataForChart)
-                                    }
+                                    ElementChartView(isVisible: $isChartVisible,
+                                                     rawData: element.dataForChart)
+//                                    Button("График надежности") {
+//                                        isChartVisible.toggle()
+//                                    }
+//                                    .sheet(isPresented: $isChartVisible) {
+//                                        ElementChartView(isVisible: $isChartVisible,
+//                                                         rawData: element.dataForChart)
+//                                    }
                                 }
                                 .padding()
                             }

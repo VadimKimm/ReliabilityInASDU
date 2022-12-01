@@ -245,7 +245,7 @@ extension ContentViewLRTwo {
             var keysForChart: Deque<String> = []
             let step = timeToReplacement[index] / 8
 
-            for t in stride(from: 0, to: timeToReplacement[index] + 2 * step, by: step) {
+            for t in stride(from: 0, to: timeToReplacement[index] + step, by: step) {
                 let P = exp(-(Double(element.intensityMistakes) ?? 0.1 ) * Double(t))
                 let installationDate = element.installationDate
                 var dateComponents = DateComponents()
@@ -261,30 +261,4 @@ extension ContentViewLRTwo {
 
         return result
     }
-
-//    func createChartDataForElement(for time: Double,
-//                                   intensityMistakes: Double,
-//                                   installationDate: Date) -> OrderedDictionary<String, String> {
-//        var dataForChart = OrderedDictionary<String, String>()
-//        var valuesForChart: Deque<String> = []
-//        var keysForChart: Deque<String> = []
-//
-//        let step = time / 8
-//
-//        for t in stride(from: 0, to: time + 2 * step, by: step) {
-//            let P = exp(-intensityMistakes * Double(t))
-//            let installationDate = installationDate
-//            var dateComponents = DateComponents()
-//            dateComponents.hour = Int(t)
-//            let date = Calendar.current.date(byAdding: dateComponents, to: installationDate) ?? Date()
-//
-//            valuesForChart.append(String(P))
-//            keysForChart.append(date.convertToExtendedString())
-//            print(P, t)
-//        }
-//        print(exp(-intensityMistakes * time))
-//
-//        dataForChart = OrderedDictionary(uniqueKeysWithValues: zip(keysForChart, valuesForChart))
-//        return dataForChart
-//    }
 }

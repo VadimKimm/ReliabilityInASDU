@@ -29,13 +29,8 @@ struct ElementChartView: View {
                 }
             }
             .padding(.all)
-
-            Button("Закрыть") {
-                isVisible.toggle()
-            }
-            .padding(.all)
         }
-        .frame(width: 1000, height: 700)
+        .frame(width: 800, height: 500)
     }
 }
 

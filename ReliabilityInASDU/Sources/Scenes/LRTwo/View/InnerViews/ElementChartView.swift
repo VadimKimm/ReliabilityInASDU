@@ -59,10 +59,10 @@ extension ElementChartView {
         }
 
         let dataSet = LineDataSet(dataPoints: dataPoints,
-                               legendTitle: "График надежности",
-                               pointStyle: PointStyle(),
-                               style: LineStyle(lineColour: ColourStyle(colour: .red),
-                                                lineType: .line))
+                                  legendTitle: "График надежности",
+                                  pointStyle: PointStyle(),
+                                  style: LineStyle(lineColour: ColourStyle(colour: .red),
+                                                   lineType: .line))
 
         var chartStyle = LineChartStyle()
         chartStyle.topLine = .maximum(of: 1)

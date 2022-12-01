@@ -36,13 +36,6 @@ struct ReplacementPlanView: View {
                                     Text("Требуемая надежность \(String(format: "%.3f", element.requiredReliability ?? 1))")
                                     ElementChartView(isVisible: $isChartVisible,
                                                      rawData: element.dataForChart)
-//                                    Button("График надежности") {
-//                                        isChartVisible.toggle()
-//                                    }
-//                                    .sheet(isPresented: $isChartVisible) {
-//                                        ElementChartView(isVisible: $isChartVisible,
-//                                                         rawData: element.dataForChart)
-//                                    }
                                 }
                                 .padding()
                             }

@@ -58,6 +58,7 @@ struct ContentViewLROne: View {
                         data.deleteModel(offsets)
                     }
                 }
+                .padding(.bottom, 10)
             }
             .frame(width: 750)
 

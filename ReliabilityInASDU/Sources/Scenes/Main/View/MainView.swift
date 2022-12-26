@@ -64,12 +64,16 @@ struct MainView: View {
                     }
                 }
             }
+            .background(Color.teal.grayscale(0.33))
         } else if selectedView == 1 {
             ContentViewLROne(selectedView: $selectedView)
+                .background(Color.gray)
         } else if selectedView == 2 {
             ContentViewLRTwo(selectedView: $selectedView)
+                .background(Color.gray)
         } else if selectedView == 3 {
             ContentViewLRFour(selectedView: $selectedView)
+                .background(Color.gray)
         }
     }
 }

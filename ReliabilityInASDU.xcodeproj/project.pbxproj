@@ -48,6 +48,7 @@
 		DDDD677E29377CF7006D154A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDD677D29377CF7006D154A /* MainView.swift */; };
 		DDDD678129378114006D154A /* BlueButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDD678029378114006D154A /* BlueButtonStyle.swift */; };
 		DDDD678329392A25006D154A /* ElementChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDD678229392A25006D154A /* ElementChartView.swift */; };
+		DDE1EA02293953FD003ACBE6 /* ForecastElementReplacementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE1EA01293953FD003ACBE6 /* ForecastElementReplacementView.swift */; };
 		DDE1EA04293960C3003ACBE6 /* WhiteButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE1EA03293960C3003ACBE6 /* WhiteButtonStyle.swift */; };
 		DDF6E3D328CFB6C600E72250 /* ReliabilityInASDUApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6E3D228CFB6C600E72250 /* ReliabilityInASDUApp.swift */; };
 		DDF6E3D528CFB6C600E72250 /* ContentViewLROne.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6E3D428CFB6C600E72250 /* ContentViewLROne.swift */; };
@@ -94,6 +95,7 @@
 		DDDD677D29377CF7006D154A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		DDDD678029378114006D154A /* BlueButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueButtonStyle.swift; sourceTree = "<group>"; };
 		DDDD678229392A25006D154A /* ElementChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementChartView.swift; sourceTree = "<group>"; };
+		DDE1EA01293953FD003ACBE6 /* ForecastElementReplacementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastElementReplacementView.swift; sourceTree = "<group>"; };
 		DDE1EA03293960C3003ACBE6 /* WhiteButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteButtonStyle.swift; sourceTree = "<group>"; };
 		DDF6E3CF28CFB6C600E72250 /* ReliabilityInASDU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReliabilityInASDU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDF6E3D228CFB6C600E72250 /* ReliabilityInASDUApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReliabilityInASDUApp.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				DD1EA22D28EF0BEB00128FF6 /* SubsystemEditBlockView.swift */,
 				DD494B6F29361A580050EE0F /* EditButtonView.swift */,
 				DDDD67792936C90F006D154A /* ReplacementPlanView.swift */,
+				DDE1EA01293953FD003ACBE6 /* ForecastElementReplacementView.swift */,
 				DDDD678229392A25006D154A /* ElementChartView.swift */,
 			);
 			path = InnerViews;
@@ -482,6 +485,7 @@
 				DD9793052906BE4700F8695D /* LineShape.swift in Sources */,
 				DD9793102906BE9A00F8695D /* XaxisView.swift in Sources */,
 				DD494B6C2934D3700050EE0F /* ContentViewLRTwo.swift in Sources */,
+				DDE1EA02293953FD003ACBE6 /* ForecastElementReplacementView.swift in Sources */,
 				DD97930A2906BE6B00F8695D /* ChartHeaderView.swift in Sources */,
 				DDDD677E29377CF7006D154A /* MainView.swift in Sources */,
 				DDF6E3D528CFB6C600E72250 /* ContentViewLROne.swift in Sources */,

@@ -19,7 +19,7 @@ struct JMChartView: View {
             ZStack {
                 if let data = createData() {
                     LineChart(chartData: data)
-//                        .pointMarkers(chartData: data)
+                        .pointMarkers(chartData: data)
                         .xAxisGrid(chartData: data)
                         .yAxisGrid(chartData: data)
                         .xAxisLabels(chartData: data)
@@ -52,8 +52,8 @@ extension JMChartView {
         let formatter = NumberFormatter()
         formatter.generatesDecimalNumbers = true
         formatter.numberStyle = .decimal
-        formatter.minimumFractionDigits = 1
-        formatter.maximumFractionDigits = 1
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
         return formatter
     }
 
@@ -74,10 +74,10 @@ extension JMChartView {
                                legendTitle: "График надежности",
                                pointStyle: PointStyle(),
                                style: LineStyle(lineColour: ColourStyle(colour: .red),
-                                                lineType: .curvedLine))
+                                                lineType: .line))
 
         let chartStyle = LineChartStyle(baseline: .minimumWithMaximum(of: 0),
-                                        topLine: .maximum(of: 1.1))
+                                        topLine: .maximum(of: 1))
 
         let chartData = LineChartData(dataSets: dataSet,
                                       chartStyle: chartStyle)

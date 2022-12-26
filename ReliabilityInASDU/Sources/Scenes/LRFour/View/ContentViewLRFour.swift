@@ -20,8 +20,8 @@ struct ContentViewLRFour: View {
     @State var m: String = "3" //число обнаруженных отказов между тестированием
     @State var N: String = "4" //число ошибок, первоначально присутствующих в программе
     @State var x: String = "1 2 3" //интервалы времени между отказами
-//    @State var T: String = "10" //продолжительность тестирования
-    @State var jmResult: String = "" //продолжительность тестирования
+    //    @State var T: String = "10" //продолжительность тестирования
+    @State var jmResult: String = ""
     @State var dataForChart: OrderedDictionary<Double, Double>? = nil
 
     @State private var showingSheet = false
@@ -71,11 +71,12 @@ struct ContentViewLRFour: View {
                         TextField("", text: $millsResult)
                             .frame(width: 70)
 
-                        Button("press") {
+                        Button("Рассчитать") {
                             calculateMills()
                         }
                     }
                 }
+                .fixedSize(horizontal: false, vertical: true)
 
                 VStack(spacing: 40) {
                     Text("Модель Джелинского-Моранды")
@@ -96,24 +97,15 @@ struct ContentViewLRFour: View {
                                 .frame(width: 50)
                                 .foregroundColor(S.isNumeric ? .white : .red)
                         }
-                    }
-                    .font(.title3)
 
-                    HStack(spacing: 40) {
                         VStack {
                             Text("x - интервалы времени между отказами")
                             TextField("", text: $x)
                                 .frame(width: 150)
                                 .foregroundColor(S.isNumeric ? .white : .red)
                         }
-
-//                        VStack {
-//                            Text("T - продолжительность тестиррования")
-//                            TextField("", text: $T)
-//                                .frame(width: 50)
-//                                .foregroundColor(S.isNumeric ? .white : .red)
-//                        }
                     }
+                    .fixedSize(horizontal: false, vertical: true)
                     .font(.title3)
 
                     HStack {
@@ -122,17 +114,27 @@ struct ContentViewLRFour: View {
                         TextField("", text: $jmResult)
                             .frame(width: 150)
 
-                        Button("press") {
-                           calculateJM()
+                        Button("Рассчитать") {
+                            calculateJM()
                         }
+
+//                        Button("Сохранить в PDF") {
+//                            exportPDF()
+//                        }
                     }
 
                     Button("Показать график") {
                         showingSheet.toggle()
                     }
                     .sheet(isPresented: $showingSheet) {
-                        JMChartView(isVisible: $showingSheet,
-                                    rawData: dataForChart)
+                        HStack(alignment: .top) {
+                            JMChartView(isVisible: $showingSheet,
+                                        rawData: dataForChart)
+
+                            JMTableView(dataForTable: dataForChart)
+                                .padding([.horizontal, .top], 20)
+                                .frame(width: 300)
+                        }
                     }
                 }
 
@@ -181,7 +183,7 @@ extension ContentViewLRFour {
         let numerator = factorial(numBot) / (factorial(numTop) * factorial(numBot - numTop))
         let denominator = factorial(denBot) / (factorial(denTop) * factorial(denBot - denTop))
         let result = numerator / denominator
-        millsResult = String(format: "%.6f", result > 1 ? 1 : result)
+        millsResult = String(format: "%.3f", result > 1 ? 1 : result)
     }
 
     func factorial(_ n: Int) -> Double {
@@ -195,7 +197,7 @@ extension ContentViewLRFour {
         let array = x.convertToArray()
         let K = Double(m) ?? 1.0
         let N = Double(N) ?? 1.0
-//        let T = Double(T) ?? 1.0
+        //        let T = Double(T) ?? 1.0
         var P = [String]()
 
         let B = calculateB(array: array)
@@ -203,8 +205,8 @@ extension ContentViewLRFour {
         let Q = calculateQ(B: B, A: A, K: K)
         let C = calculateC(K: K, A: A, Q: Q, N: N)
 
-        var valuesForChart: Deque<Double> = []
-        var keysForChart: Deque<Double> = []
+        var xValues: Deque<Double> = []
+        var yValues: Deque<Double> = []
 
         for (_, time) in array.enumerated() {
             var pValue = exp(-(N - K) * C * time)
@@ -215,16 +217,17 @@ extension ContentViewLRFour {
                 pValue = 0
             }
 
-            keysForChart.append(time)
-            valuesForChart.append(pValue)
+            xValues.append(time)
+            yValues.append(pValue)
 
             P.append(String(format: "%.2f", pValue))
         }
 
-        valuesForChart.reverse()
-//        valuesForChart.prepend(1)
-//        keysForChart.prepend(0)
-        dataForChart = OrderedDictionary(uniqueKeysWithValues: zip(keysForChart, valuesForChart))
+        yValues.reverse()
+        let exponentYValuesForChart = convertToExponent(xValues: xValues,
+                                                        yValues: yValues)
+
+        dataForChart = OrderedDictionary(uniqueKeysWithValues: zip(xValues, exponentYValuesForChart))
 
         let result = P.reversed().joined(separator: " ")
         jmResult = result
@@ -250,5 +253,28 @@ extension ContentViewLRFour {
 
     func calculateC(K: Double, A: Double, Q: Double, N: Double) -> Double {
         (K / A) / (N + 1 - Q * K)
+    }
+
+    func convertToExponent(xValues: Deque<Double>, yValues: Deque<Double>) -> Deque<Double> {
+        var newValues = Deque<Double>()
+
+        guard let x1 = xValues.first,
+              let x2 = xValues.last,
+              let y1 = yValues.first,
+              let y2 = yValues.last
+        else {
+            return newValues
+        }
+
+        let b = log(y1 / y2) / (x1 - x2)
+        let s = log(y1) - log(y1 / y2) * x1 / (x1 - x2)
+        let c = exp(s)
+
+        for x in xValues {
+            let newValue = c * exp(b * x)
+            newValues.append(newValue)
+        }
+
+        return newValues
     }
 }

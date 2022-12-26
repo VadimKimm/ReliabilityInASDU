@@ -47,6 +47,7 @@
 		DDDD677E29377CF7006D154A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDD677D29377CF7006D154A /* MainView.swift */; };
 		DDDD678129378114006D154A /* BlueButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDD678029378114006D154A /* BlueButtonStyle.swift */; };
 		DDDD678329392A25006D154A /* ElementChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDD678229392A25006D154A /* ElementChartView.swift */; };
+		DDE1EA04293960C3003ACBE6 /* WhiteButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE1EA03293960C3003ACBE6 /* WhiteButtonStyle.swift */; };
 		DDF6E3D328CFB6C600E72250 /* ReliabilityInASDUApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6E3D228CFB6C600E72250 /* ReliabilityInASDUApp.swift */; };
 		DDF6E3D528CFB6C600E72250 /* ContentViewLROne.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6E3D428CFB6C600E72250 /* ContentViewLROne.swift */; };
 		DDF6E3D728CFB6C800E72250 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDF6E3D628CFB6C800E72250 /* Assets.xcassets */; };
@@ -91,6 +92,7 @@
 		DDDD677D29377CF7006D154A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		DDDD678029378114006D154A /* BlueButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueButtonStyle.swift; sourceTree = "<group>"; };
 		DDDD678229392A25006D154A /* ElementChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementChartView.swift; sourceTree = "<group>"; };
+		DDE1EA03293960C3003ACBE6 /* WhiteButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteButtonStyle.swift; sourceTree = "<group>"; };
 		DDF6E3CF28CFB6C600E72250 /* ReliabilityInASDU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReliabilityInASDU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDF6E3D228CFB6C600E72250 /* ReliabilityInASDUApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReliabilityInASDUApp.swift; sourceTree = "<group>"; };
 		DDF6E3D428CFB6C600E72250 /* ContentViewLROne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewLROne.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				DD1EA22B28EF072200128FF6 /* Date+Ext.swift */,
 				DD1EA23128EF36E400128FF6 /* Double+Ext.swift */,
 				DDDD678029378114006D154A /* BlueButtonStyle.swift */,
+				DDE1EA03293960C3003ACBE6 /* WhiteButtonStyle.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -502,6 +505,7 @@
 				DD9793122906BEA400F8695D /* KeyView.swift in Sources */,
 				DD4DA6E429081BD800ECA0D0 /* ContentViewLRFour.swift in Sources */,
 				DD97930E2906BE8900F8695D /* YaxisView.swift in Sources */,
+				DDE1EA04293960C3003ACBE6 /* WhiteButtonStyle.swift in Sources */,
 				DDC3754128DDD1D1005A5EE2 /* HeaderView.swift in Sources */,
 				DD9793022906BE2100F8695D /* KaplanModel.swift in Sources */,
 			);

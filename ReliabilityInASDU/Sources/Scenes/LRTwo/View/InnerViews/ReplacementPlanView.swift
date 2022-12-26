@@ -10,8 +10,8 @@ import SwiftUI
 struct ReplacementPlanView: View {
 
     var subsystems: [SubsystemBlock]
+    @State private var showForecastView = false
     @Binding var isVisible: Bool
-    @State var isChartVisible = false
 
     var body: some View {
         VStack {
@@ -34,8 +34,7 @@ struct ReplacementPlanView: View {
                                     Text("Дата установки: \(element.installationDate.convertToString())")
                                     Text("Дата замены: \(element.dateToReplacement?.convertToExtendedString() ?? Date().convertToExtendedString())")
                                     Text("Требуемая надежность \(String(format: "%.3f", element.requiredReliability ?? 1))")
-                                    ElementChartView(isVisible: $isChartVisible,
-                                                     rawData: element.dataForChart)
+                                    ElementChartView(rawData: element.dataForChart)
                                 }
                                 .padding()
                             }
@@ -48,8 +47,17 @@ struct ReplacementPlanView: View {
                 Spacer()
             }
 
-            Button("Закрыть") {
-                isVisible = false
+            HStack {
+                Button("Прогноз количества замен элементов") {
+                    showForecastView = true
+                }
+
+                Button("Закрыть") {
+                    isVisible = false
+                }
+            }
+            .sheet(isPresented: $showForecastView) {
+                ForecastElementReplacementView(subsystems: subsystems, isVisible: $showForecastView)
             }
         }
         .padding()

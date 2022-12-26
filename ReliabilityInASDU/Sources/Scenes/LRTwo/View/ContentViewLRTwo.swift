@@ -62,7 +62,6 @@ struct ContentViewLRTwo: View {
                         ReplacementPlanView(subsystems: subsystems, isVisible: $showReplacementPlan)
                     }
                 }
-
                 .alert("Ошибка", isPresented: $showAlert) {
                     Button("OK", role: .cancel) {
                         showAlert.toggle()
@@ -75,18 +74,26 @@ struct ContentViewLRTwo: View {
                 VStack() {
                     HStack {
                         Text("Критич. уровень надежности")
-                            .font(.title3)
+                            .font(.title2)
+                            .bold()
                             .padding(.horizontal, 10)
                         TextField("", text: $targetReliabilityFactor)
                             .frame(width: 60)
-                        Button("Сформировать план") {
+
+                        Button {
                             makePlan()
 
                             guard !subsystems.isEmpty else { return }
                             showReplacementPlan.toggle()
+                        } label: {
+                            Text("Сформировать план")
+                                .frame(width: 200, height: 40)
+                                .lineLimit(1)
+                                .clipShape(Capsule())
                         }
+                        .buttonStyle(WhiteButtonStyle())
                         .frame(width: 200)
-                        .padding(.leading, 230)
+                        .padding(.leading, 180)
                     }
                 }
                 .padding(.top, 20)
@@ -98,7 +105,7 @@ struct ContentViewLRTwo: View {
                 Button(role: .cancel) {
                     subsystems.append(SubsystemBlock(type: .firstType))
                 } label: {
-                  Label("Добавить", systemImage: "plus")
+                    Label("Добавить", systemImage: "plus")
                 }
 
                 Spacer()
@@ -161,13 +168,9 @@ extension ContentViewLRTwo {
             let chartData = createChartDataForElements(subsystem, timeToReplacement: timeToReplacement)
 
             for (index, time) in timeToReplacement.enumerated() {
-//                print("Требуемая надежность элемента \(index + 1) - \(arrayOfPi[index])")
+                print("Требуемая надежность элемента \(index + 1) - \(arrayOfPi[index])")
                 print("Время до замены элемента \(index + 1) - \(time)")
-//                print("Дата замены элемента \(index + 1) - \(dateToReplacement[index].convertToString())")
-
-//                let chartData = createChartDataForElement(for: time,
-//                                                          intensityMistakes: Double(subsystem.elements[index].intensityMistakes) ?? 0.01,
-//                                                          installationDate: subsystem.elements[index].installationDate)
+                print("Дата замены элемента \(index + 1) - \(dateToReplacement[index].convertToString())")
                 subsystem.elements[index].dateToReplacement = dateToReplacement[index]
                 subsystem.elements[index].dataForChart = chartData[index]
                 subsystem.elements[index].requiredReliability = arrayOfPi[index]

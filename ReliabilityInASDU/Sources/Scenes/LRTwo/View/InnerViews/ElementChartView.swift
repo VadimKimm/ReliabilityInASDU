@@ -10,8 +10,6 @@ import SwiftUICharts
 import OrderedCollections
 
 struct ElementChartView: View {
-
-    @Binding var isVisible: Bool
     @State var rawData: OrderedDictionary<String, String>? = nil
 
     var body: some View {

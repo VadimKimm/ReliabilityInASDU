@@ -25,6 +25,7 @@
 		DD494B6E293605630050EE0F /* SubsystemBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD494B6D293605630050EE0F /* SubsystemBlock.swift */; };
 		DD494B7029361A580050EE0F /* EditButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD494B6F29361A580050EE0F /* EditButtonView.swift */; };
 		DD4DA6E429081BD800ECA0D0 /* ContentViewLRFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DA6E329081BD800ECA0D0 /* ContentViewLRFour.swift */; };
+		DD7BE80F2958B154001F5C6D /* JMTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7BE80E2958B154001F5C6D /* JMTableView.swift */; };
 		DD94FE0E290D520A009E07D7 /* JMChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD94FE0D290D520A009E07D7 /* JMChartView.swift */; };
 		DD94FE11290D53BA009E07D7 /* JMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD94FE10290D53BA009E07D7 /* JMModel.swift */; };
 		DD9792FD2906BE0300F8695D /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9792FC2906BE0300F8695D /* CustomColors.swift */; };
@@ -70,6 +71,7 @@
 		DD494B6D293605630050EE0F /* SubsystemBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubsystemBlock.swift; sourceTree = "<group>"; };
 		DD494B6F29361A580050EE0F /* EditButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButtonView.swift; sourceTree = "<group>"; };
 		DD4DA6E329081BD800ECA0D0 /* ContentViewLRFour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewLRFour.swift; sourceTree = "<group>"; };
+		DD7BE80E2958B154001F5C6D /* JMTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMTableView.swift; sourceTree = "<group>"; };
 		DD94FE0D290D520A009E07D7 /* JMChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMChartView.swift; sourceTree = "<group>"; };
 		DD94FE10290D53BA009E07D7 /* JMModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMModel.swift; sourceTree = "<group>"; };
 		DD9792FC2906BE0300F8695D /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			children = (
 				DD4DA6E329081BD800ECA0D0 /* ContentViewLRFour.swift */,
 				DD94FE0D290D520A009E07D7 /* JMChartView.swift */,
+				DD7BE80E2958B154001F5C6D /* JMTableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				DD97930A2906BE6B00F8695D /* ChartHeaderView.swift in Sources */,
 				DDDD677E29377CF7006D154A /* MainView.swift in Sources */,
 				DDF6E3D528CFB6C600E72250 /* ContentViewLROne.swift in Sources */,
+				DD7BE80F2958B154001F5C6D /* JMTableView.swift in Sources */,
 				DDF6E3D328CFB6C600E72250 /* ReliabilityInASDUApp.swift in Sources */,
 				DD9793142906BEB500F8695D /* ContentViewLRThree.swift in Sources */,
 				DD1EA22E28EF0BEB00128FF6 /* SubsystemEditBlockView.swift in Sources */,

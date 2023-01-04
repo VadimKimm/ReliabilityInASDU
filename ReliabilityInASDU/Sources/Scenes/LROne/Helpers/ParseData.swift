@@ -7,49 +7,61 @@
 
 import Foundation
 
-class ParseData: ObservableObject  {
+class ParseData  {
 
-    @Published var intensityMistakes = [IntensityMistakes]()
+//    @Published var intensityMistakes = [IntensityMistakes]()
 
-    init(){
-        loadData()
-    }
+//    init(){
+//        loadData()
+//    }
 
-    func loadData() {
-        guard let url = Bundle.main.url(forResource: "data", withExtension: "json") else {
-            print("Json file not found")
-            return
-        }
+    static let shared = ParseData()
+//
+//    func loadData() -> [OperatorTaskModel] {
+//        var result = [OperatorTaskModel]()
+//
+//        guard let url = Bundle.main.url(forResource: "data", withExtension: "json") else {
+//            print("Json file not found")
+//            return result
+//        }
+//
+//        do {
+//            let data = try? Data(contentsOf: url)
+//            let intensityMistakes = try JSONDecoder().decode([OperatorTaskModel].self, from: data!)
+//            result = intensityMistakes
+////            return intensityMistakes
+//        } catch {
+//            print(error)
+//        }
+//
+//        return result
+//    }
+//
+//    func loadBlankModel() -> [OperatorTaskModel] {
+//        var result = [OperatorTaskModel]()
+//
+//        guard let url = Bundle.main.url(forResource: "blankData", withExtension: "json") else {
+//            print("Json file not found")
+//            return result
+//        }
+//
+//        do {
+//            let data = try? Data(contentsOf: url)
+//            let blankModel = try JSONDecoder().decode([OperatorTaskModel].self, from: data!)
+////            self.intensityMistakes.append(contentsOf: blankModel)
+//            result = blankModel
+//        } catch {
+//            print(error)
+//        }
+//
+//        return result
+//    }
 
-        do {
-            let data = try? Data(contentsOf: url)
-            let intensityMistakes = try JSONDecoder().decode([IntensityMistakes].self, from: data!)
-            self.intensityMistakes = intensityMistakes
-        } catch {
-            print(error)
-        }
-    }
+//    func deleteModel(_ offsets: IndexSet) {
+//        self.intensityMistakes.remove(atOffsets: offsets)
+//    }
 
-    func loadBlankModel() {
-        guard let url = Bundle.main.url(forResource: "blankData", withExtension: "json") else {
-            print("Json file not found")
-            return
-        }
-
-        do {
-            let data = try? Data(contentsOf: url)
-            let blankModel = try JSONDecoder().decode([IntensityMistakes].self, from: data!)
-            self.intensityMistakes.append(contentsOf: blankModel)
-        } catch {
-            print(error)
-        }
-    }
-
-    func deleteModel(_ offsets: IndexSet) {
-        self.intensityMistakes.remove(atOffsets: offsets)
-    }
-
-    func saveData() {
+//    func saveData() {
 //        guard let url = Bundle.main.url(forResource: "testData", withExtension: "json") else {
 //            print("Json file not found")
 //            return
@@ -67,18 +79,18 @@ class ParseData: ObservableObject  {
 //        let fileExists = FileManager.default.fileExists(atPath: fileUrl!.path)
 //        print(fileExists)
 //        print(documentsURL)
-
-        guard let url = Bundle.main.url(forResource: "savedData", withExtension: "json") else {
-            print("Json file not found")
-            return
-        }
-
-        do {
-            let jsonEncoder = JSONEncoder()
-            let jsonData = try jsonEncoder.encode(self.intensityMistakes)
-            try jsonData.write(to: url, options: [.atomic, .noFileProtection])
-        } catch {
-            print(error)
-        }
-    }
+//
+//        guard let url = Bundle.main.url(forResource: "savedData", withExtension: "json") else {
+//            print("Json file not found")
+//            return
+//        }
+//
+//        do {
+//            let jsonEncoder = JSONEncoder()
+//            let jsonData = try jsonEncoder.encode(self.intensityMistakes)
+//            try jsonData.write(to: url, options: [.atomic, .noFileProtection])
+//        } catch {
+//            print(error)
+//        }
+//    }
 }

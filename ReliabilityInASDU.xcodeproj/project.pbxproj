@@ -40,10 +40,12 @@
 		DD9793122906BEA400F8695D /* KeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9793112906BEA400F8695D /* KeyView.swift */; };
 		DD9793142906BEB500F8695D /* ContentViewLRThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9793132906BEB500F8695D /* ContentViewLRThree.swift */; };
 		DDC3754128DDD1D1005A5EE2 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC3754028DDD1D1005A5EE2 /* HeaderView.swift */; };
-		DDC3754728DDFC23005A5EE2 /* savedData.json in Resources */ = {isa = PBXBuildFile; fileRef = DDC3754628DDFC23005A5EE2 /* savedData.json */; };
 		DDCD765828CFBC9100F637CE /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = DDCD765728CFBC9100F637CE /* data.json */; };
-		DDCD765B28CFBCD100F637CE /* IntensityMistakes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCD765A28CFBCD100F637CE /* IntensityMistakes.swift */; };
+		DDCD765B28CFBCD100F637CE /* OperatorTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCD765A28CFBCD100F637CE /* OperatorTaskModel.swift */; };
 		DDCD765E28CFBD1800F637CE /* ParseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCD765D28CFBD1800F637CE /* ParseData.swift */; };
+		DDDB77A02965BC2E00B09D01 /* Stash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DDDB779E2965BC2E00B09D01 /* Stash.xcdatamodeld */; };
+		DDDB77A22965BD5700B09D01 /* StashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDB77A12965BD5700B09D01 /* StashController.swift */; };
+		DDDB77A52965D0B000B09D01 /* SaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDB77A42965D0B000B09D01 /* SaveView.swift */; };
 		DDDD677A2936C90F006D154A /* ReplacementPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDD67792936C90F006D154A /* ReplacementPlanView.swift */; };
 		DDDD677E29377CF7006D154A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDD677D29377CF7006D154A /* MainView.swift */; };
 		DDDD678129378114006D154A /* BlueButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDD678029378114006D154A /* BlueButtonStyle.swift */; };
@@ -87,10 +89,12 @@
 		DD9793112906BEA400F8695D /* KeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyView.swift; sourceTree = "<group>"; };
 		DD9793132906BEB500F8695D /* ContentViewLRThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewLRThree.swift; sourceTree = "<group>"; };
 		DDC3754028DDD1D1005A5EE2 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
-		DDC3754628DDFC23005A5EE2 /* savedData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = savedData.json; sourceTree = "<group>"; };
 		DDCD765728CFBC9100F637CE /* data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
-		DDCD765A28CFBCD100F637CE /* IntensityMistakes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityMistakes.swift; sourceTree = "<group>"; };
+		DDCD765A28CFBCD100F637CE /* OperatorTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorTaskModel.swift; sourceTree = "<group>"; };
 		DDCD765D28CFBD1800F637CE /* ParseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseData.swift; sourceTree = "<group>"; };
+		DDDB779F2965BC2E00B09D01 /* Stash.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stash.xcdatamodel; sourceTree = "<group>"; };
+		DDDB77A12965BD5700B09D01 /* StashController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StashController.swift; sourceTree = "<group>"; };
+		DDDB77A42965D0B000B09D01 /* SaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveView.swift; sourceTree = "<group>"; };
 		DDDD67792936C90F006D154A /* ReplacementPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplacementPlanView.swift; sourceTree = "<group>"; };
 		DDDD677D29377CF7006D154A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		DDDD678029378114006D154A /* BlueButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueButtonStyle.swift; sourceTree = "<group>"; };
@@ -137,11 +141,13 @@
 		DD1EA22A28EF06D600128FF6 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				DDDB77A32965BD7B00B09D01 /* Stash */,
 				DD42012228D4F41B007BB9E6 /* String+Ext.swift */,
 				DD1EA22B28EF072200128FF6 /* Date+Ext.swift */,
 				DD1EA23128EF36E400128FF6 /* Double+Ext.swift */,
 				DDDD678029378114006D154A /* BlueButtonStyle.swift */,
 				DDE1EA03293960C3003ACBE6 /* WhiteButtonStyle.swift */,
+				DDDB77A42965D0B000B09D01 /* SaveView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -271,7 +277,7 @@
 		DDCD765928CFBCA800F637CE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DDCD765A28CFBCD100F637CE /* IntensityMistakes.swift */,
+				DDCD765A28CFBCD100F637CE /* OperatorTaskModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -282,6 +288,15 @@
 				DDCD765D28CFBD1800F637CE /* ParseData.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		DDDB77A32965BD7B00B09D01 /* Stash */ = {
+			isa = PBXGroup;
+			children = (
+				DDDB779E2965BC2E00B09D01 /* Stash.xcdatamodeld */,
+				DDDB77A12965BD5700B09D01 /* StashController.swift */,
+			);
+			path = Stash;
 			sourceTree = "<group>";
 		};
 		DDDD677B29377CE0006D154A /* Main */ = {
@@ -324,7 +339,6 @@
 				DDF6E3DB28CFB6C800E72250 /* ReliabilityInASDU.entitlements */,
 				DDCD765728CFBC9100F637CE /* data.json */,
 				DD42011E28D4DD03007BB9E6 /* blankData.json */,
-				DDC3754628DDFC23005A5EE2 /* savedData.json */,
 			);
 			path = ReliabilityInASDU;
 			sourceTree = "<group>";
@@ -463,7 +477,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDF6E3DA28CFB6C800E72250 /* Preview Assets.xcassets in Resources */,
-				DDC3754728DDFC23005A5EE2 /* savedData.json in Resources */,
 				DDCD765828CFBC9100F637CE /* data.json in Resources */,
 				DDF6E3D728CFB6C800E72250 /* Assets.xcassets in Resources */,
 				DD42011F28D4DD03007BB9E6 /* blankData.json in Resources */,
@@ -485,8 +498,10 @@
 				DD9793052906BE4700F8695D /* LineShape.swift in Sources */,
 				DD9793102906BE9A00F8695D /* XaxisView.swift in Sources */,
 				DD494B6C2934D3700050EE0F /* ContentViewLRTwo.swift in Sources */,
+				DDDB77A22965BD5700B09D01 /* StashController.swift in Sources */,
 				DDE1EA02293953FD003ACBE6 /* ForecastElementReplacementView.swift in Sources */,
 				DD97930A2906BE6B00F8695D /* ChartHeaderView.swift in Sources */,
+				DDDB77A52965D0B000B09D01 /* SaveView.swift in Sources */,
 				DDDD677E29377CF7006D154A /* MainView.swift in Sources */,
 				DDF6E3D528CFB6C600E72250 /* ContentViewLROne.swift in Sources */,
 				DD7BE80F2958B154001F5C6D /* JMTableView.swift in Sources */,
@@ -496,7 +511,7 @@
 				DD494B6E293605630050EE0F /* SubsystemBlock.swift in Sources */,
 				DD42012128D4E010007BB9E6 /* TabButtonView.swift in Sources */,
 				DD1EA23228EF36E400128FF6 /* Double+Ext.swift in Sources */,
-				DDCD765B28CFBCD100F637CE /* IntensityMistakes.swift in Sources */,
+				DDCD765B28CFBCD100F637CE /* OperatorTaskModel.swift in Sources */,
 				DD94FE11290D53BA009E07D7 /* JMModel.swift in Sources */,
 				DDDD677A2936C90F006D154A /* ReplacementPlanView.swift in Sources */,
 				DD94FE0E290D520A009E07D7 /* JMChartView.swift in Sources */,
@@ -506,6 +521,7 @@
 				DD1EA22C28EF072200128FF6 /* Date+Ext.swift in Sources */,
 				DD1EA22928EEFB5A00128FF6 /* SchemeElement.swift in Sources */,
 				DDDD678329392A25006D154A /* ElementChartView.swift in Sources */,
+				DDDB77A02965BC2E00B09D01 /* Stash.xcdatamodeld in Sources */,
 				DD1EA22728EEF82500128FF6 /* SubsystemComponentsView.swift in Sources */,
 				DD1EA21E28EEE4BD00128FF6 /* SubsystemView.swift in Sources */,
 				DD9792FD2906BE0300F8695D /* CustomColors.swift in Sources */,
@@ -754,6 +770,19 @@
 			productName = OrderedCollections;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		DDDB779E2965BC2E00B09D01 /* Stash.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DDDB779F2965BC2E00B09D01 /* Stash.xcdatamodel */,
+			);
+			currentVersion = DDDB779F2965BC2E00B09D01 /* Stash.xcdatamodel */;
+			path = Stash.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DDF6E3C728CFB6C600E72250 /* Project object */;
 }

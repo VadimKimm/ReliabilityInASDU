@@ -10,24 +10,30 @@ import SwiftUI
 struct ContentViewLROne: View {
     @Binding var selectedView: Int
 
-    @ObservedObject var data = ParseData()
+    @State var data = [OperatorTaskModel]()
     @State var result = ""
-    @State var Pk: String = String(IntensityMistakes.Probabilities.Pk)
-    @State var Pob: String = String(IntensityMistakes.Probabilities.Pob)
-    @State var Pi: String = String(IntensityMistakes.Probabilities.Pi)
+    @State var Pk: String = "0.95"
+    @State var Pob: String = "1"
+    @State var Pi: String = "0.7"
+
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var operatorReliabilityItems: FetchedResults<OperatorReliabilityItem>
+
+    @State private var showingSaveView = false
+    @State private var saveItemName = ""
 
     var body: some View {
         HStack {
-            VStack {
+            VStack(alignment: .leading) {
                 HeaderView()
                     .padding(.top, 10)
 
                 List {
-                    ForEach($data.intensityMistakes) { $item in
+                    ForEach($data) { $item in
                         VStack {
                             HStack {
                                 ZStack {
-                                    TextEditor(text: $item.description)
+                                    TextEditor(text: $item.descriptionModel)
                                         .background(.bar)
                                         .menuIndicator(.hidden)
 
@@ -55,64 +61,79 @@ struct ContentViewLROne: View {
                         }
                     }
                     .onDelete { offsets in
-                        data.deleteModel(offsets)
+                        deleteModel(at: offsets)
                     }
                 }
                 .padding(.bottom, 10)
-            }
-            .frame(width: 750)
 
-            VStack(alignment: .leading) {
-                VStack(alignment: .leading) {
-                    TabButtonView(image: "plus",
-                                  title: "Add",
-                                  action: { addButtonPressed() })
-                    .padding(.leading, 20)
-
-                    TabButtonView(image: "square.and.arrow.down",
-                                  title: "Save",
-                                  action: { saveButtonPressed() })
-                    .padding(.leading, 20)
-
-                    TabButtonView(image: "equal",
-                                  title: "Compute",
-                                  action: { computeButtonPressed() })
-                    .padding(.leading, 20)
-
-                    TextField("", text: $result)
-                        .frame(width: 70)
-                        .padding(.leading, 20)
+                HStack(alignment: .top) {
+                    HStack {
+                        Text("Pk:   ")
+                        TextField("", text: $Pk)
+                            .frame(width: 50)
+                            .foregroundColor(Pk.isNumeric ? .white : .red)
+                    }
+                    
+                    HStack {
+                        Text("Pob: ")
+                        TextField("", text: $Pob)
+                            .frame(width: 50)
+                            .foregroundColor(Pob.isNumeric ? .white : .red)
+                    }
+                    
+                    HStack {
+                        Text("Pi:    ")
+                        TextField("", text: $Pi)
+                            .frame(width: 50)
+                            .foregroundColor(Pi.isNumeric ? .white : .red)
+                    }
 
                     Spacer()
+
+                    Button("Добавить строку") {
+                        addButtonPressed()
+                    }
                 }
-                .frame(width: 80)
-                .padding(.top, 40)
+                .padding(.bottom, 10)
 
                 HStack {
-                    Text("Pk:   ")
-                    TextField("", text: $Pk)
-                        .frame(width: 50)
-                        .foregroundColor(Pk.isNumeric ? .white : .red)
+                    Button("Рассчитать") {
+                        computeButtonPressed()
+                    }
+                    
+                    TextField("Надежность", text: $result)
+                        .frame(width: 100)
+                        .padding(.leading, 20)
                 }
+                .padding(.bottom, 10)
 
-                HStack {
-                    Text("Pob: ")
-                    TextField("", text: $Pob)
-                        .frame(width: 50)
-                        .foregroundColor(Pob.isNumeric ? .white : .red)
-                }
-
-                HStack {
-                    Text("Pi:    ")
-                    TextField("", text: $Pi)
-                        .frame(width: 50)
-                        .foregroundColor(Pi.isNumeric ? .white : .red)
-                }
-
-                Spacer()
             }
-            .frame(width: 150)
-            .padding(.top, 40)
+            .frame(width: 750)
+            .padding(.leading, 20)
+
+            VStack(alignment: .leading) {
+                List {
+                    ForEach(operatorReliabilityItems) { item in
+                        HStack {
+                            Text(item.name ?? "Unknown")
+                            Text(item.date?.convertToExtendedString() ?? "Unknown")
+                        }
+                        .onTapGesture(count: 2, perform: {
+                            setItemValues(of: item)
+                        })
+                    }
+                    .onDelete(perform: removeOperatorItem(at: ))
+                }
+
+                Button("Сохранить") {
+                    showingSaveView.toggle()
+                }
+                .sheet(isPresented: $showingSaveView) {
+                    SaveView(name: $saveItemName, isVisible: $showingSaveView, action: save )
+                }
+            }
+            .frame(width: 200)
+            .padding(.all, 20)
         }
         .frame(minWidth: 1000, minHeight: 600)
         .navigationTitle("ОЦЕНКА НАДЕЖНОСТИ БЕЗОШИБОЧНОГО ВЫПОЛНЕНИЯ ОПЕРАТОРОМ ПОСТАВЛЕННЫХ ЕМУ ЗАДАЧ")
@@ -128,9 +149,37 @@ struct ContentViewLROne: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentViewLROne(selectedView: .constant(0))
+// MARK: - CoreData Actions
+
+extension ContentViewLROne {
+    func removeOperatorItem(at offsets: IndexSet) {
+        for index in offsets {
+            let item = operatorReliabilityItems[index]
+            moc.delete(item)
+        }
+
+        try? moc.save()
+    }
+
+    func save() {
+        let operatorReliabilityItem = OperatorReliabilityItem(context: moc)
+        operatorReliabilityItem.items = data
+        operatorReliabilityItem.name = saveItemName
+        operatorReliabilityItem.date = Date()
+        operatorReliabilityItem.pi = Pi
+        operatorReliabilityItem.pk = Pk
+        operatorReliabilityItem.pob = Pob
+        operatorReliabilityItem.reliability = result
+
+        try? moc.save()
+    }
+
+    func setItemValues(of item: OperatorReliabilityItem) {
+        data = item.items ?? [OperatorTaskModel]()
+        result = item.reliability ?? "Unknown"
+        Pk = item.pk ?? "Unknown"
+        Pi = item.pi ?? "Unknown"
+        Pob = item.pob ?? "Unknown"
     }
 }
 
@@ -139,17 +188,12 @@ struct ContentView_Previews: PreviewProvider {
 extension ContentViewLROne {
 
     private func addButtonPressed() {
-        data.loadBlankModel()
+        let model = OperatorTaskModel.createBlankModel()
+        data.append(model)
     }
 
-    private func saveButtonPressed() {
-        data.saveData()
-    }
-
-    private func submitButtonPressed() {
-        setNewConstants(Pk: Double(Pk),
-                        Pob: Double(Pob),
-                        Pi: Double(Pi))
+    private func deleteModel(at offsets: IndexSet) {
+        data.remove(atOffsets: offsets)
     }
 }
 
@@ -157,15 +201,15 @@ extension ContentViewLROne {
 
 extension ContentViewLROne {
     private func computeButtonPressed() {
-        submitButtonPressed()
-        let result = computeProbability(array: data.intensityMistakes)
+//        submitButtonPressed()
+        let result = computeProbability(array: data)
         self.result = result
     }
 
-    private func computeProbability(array:  [IntensityMistakes]) -> String {
+    private func computeProbability(array:  [OperatorTaskModel]) -> String {
         var Pop = Double()
         var expPower = Double()
-        let Pisp = IntensityMistakes.Probabilities.Pk * IntensityMistakes.Probabilities.Pob * IntensityMistakes.Probabilities.Pi
+        let Pisp = (Double(Pk) ?? 0.95) * (Double(Pob) ?? 1) * (Double(Pi) ?? 0.7)
 
         for item in array {
             let baseAndPower = item.intensityMistakes.convertToDemical()
@@ -177,11 +221,5 @@ extension ContentViewLROne {
 
         Pop = exp(-expPower)
         return String(format: "%.4f", (Pop + (1 - Pop) * Pisp))
-    }
-
-    private func setNewConstants(Pk: Double?, Pob: Double?, Pi: Double?) {
-        IntensityMistakes.Probabilities.Pk = Pk ?? IntensityMistakes.Probabilities.Pk
-        IntensityMistakes.Probabilities.Pob = Pob ?? IntensityMistakes.Probabilities.Pob
-        IntensityMistakes.Probabilities.Pi = Pi ?? IntensityMistakes.Probabilities.Pi
     }
 }

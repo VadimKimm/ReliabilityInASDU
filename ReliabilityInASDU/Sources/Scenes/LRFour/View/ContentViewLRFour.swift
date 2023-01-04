@@ -17,24 +17,24 @@ struct ContentViewLRFour: View {
     @State var K: String = "6"
     @State var millsResult: String = ""
 
-    @State var m: String = "3" //число обнаруженных отказов между тестированием
-    @State var N: String = "4" //число ошибок, первоначально присутствующих в программе
-    @State var x: String = "1 2 3" //интервалы времени между отказами
+    @State var m: String = "" //число обнаруженных отказов между тестированием
+    @State var N: String = "" //число ошибок, первоначально присутствующих в программе
+    @State var x: String = "" //интервалы времени между отказами
     //    @State var T: String = "10" //продолжительность тестирования
     @State var jmResult: String = ""
     @State var dataForChart: OrderedDictionary<Double, Double>? = nil
 
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var jmItems: FetchedResults<JMItem>
+
     @State private var showingSheet = false
     @Binding var selectedView: Int
 
+    @State private var showingSaveView = false
+    @State private var saveItemName = ""
+
     var body: some View {
         HStack {
-            VStack(alignment: .leading) {
-                //Боковое меню
-            }
-            .frame(width: 80)
-            .padding(.top, 40)
-
             VStack {
                 VStack(spacing: 40) {
                     Text("Модель Миллса")
@@ -119,7 +119,7 @@ struct ContentViewLRFour: View {
                         }
 
 //                        Button("Сохранить в PDF") {
-//                            exportPDF()
+////                            exportPDF()
 //                        }
                     }
 
@@ -140,7 +140,33 @@ struct ContentViewLRFour: View {
 
                 Spacer()
             }
+            .padding(.leading, 20)
             .frame(width: 750)
+
+            VStack(alignment: .leading) {
+                List {
+                    ForEach(jmItems) { item in
+                        HStack {
+                            Text(item.name ?? "Unknown")
+                            Text(item.date?.convertToExtendedString() ?? "Unknown")
+                        }
+                        .onTapGesture(count: 2, perform: {
+                            setItemValues(of: item)
+                        })
+                    }
+                    .onDelete(perform: removeJMItem(at: ))
+
+                }
+
+                Button("Сохранить") {
+                    showingSaveView.toggle()
+                }
+                .sheet(isPresented: $showingSaveView) {
+                    SaveView(name: $saveItemName, isVisible: $showingSaveView, action: save)
+                }
+            }
+            .frame(width: 200)
+            .padding(.all, 20)
         }
         .frame(minWidth: 1000, minHeight: 600)
         .navigationTitle("РАСЧЕТ НАДЕЖНОСТИ ПО")
@@ -162,7 +188,41 @@ struct ContentViewLRFour_Previews: PreviewProvider {
     }
 }
 
+//CoreData functions
+
+extension ContentViewLRFour {
+    func removeJMItem(at offsets: IndexSet) {
+        for index in offsets {
+            let item = jmItems[index]
+            moc.delete(item)
+        }
+
+        try? moc.save()
+    }
+
+    func save() {
+        let jmItem = JMItem(context: moc)
+        jmItem.name = saveItemName
+        jmItem.date = Date()
+        jmItem.x = x
+        jmItem.m = m
+        jmItem.n = N
+        jmItem.probability = jmResult
+
+        try? moc.save()
+    }
+
+    func setItemValues(of item: JMItem) {
+        x = item.x ?? "1 2 3"
+        m = item.m ?? "3"
+        N = item.n ?? "4"
+        jmResult = item.probability ?? "0.57 0.69 0.83"
+        calculateJM()
+    }
+}
+
 //Mills functions
+
 extension ContentViewLRFour {
     func calculateMills() {
         let s = Int(S) ?? 1 //𝑆 – количество искусственно внесенных ошибок
@@ -192,6 +252,7 @@ extension ContentViewLRFour {
 }
 
 //J-M functions
+
 extension ContentViewLRFour {
     func calculateJM() {
         let array = x.convertToArray()

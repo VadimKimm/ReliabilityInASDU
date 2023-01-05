@@ -33,6 +33,7 @@ struct MainView: View {
 
                     Button {
                         selectedView = 2
+//                        StashController.shared.deleteAllData(entity: "SystemSchemeItem")
                     } label: {
                         Text("НАДЕЖНОСТЬ ТЕХНОЛОГИЧЕСКОГО ОБОРУДОВАНИЯ. ПОСТРОЕНИЕ ПЛАНА ЗАМЕНЫ ОБОРУДОВАНИЯ")
                             .frame(width: 300, height: 80)

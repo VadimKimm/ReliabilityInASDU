@@ -20,4 +20,11 @@ struct StashController {
             }
         }
     }
+
+    func deleteAllData(entity: String) {
+        let ReqVar = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: ReqVar)
+        do { try contatiner.viewContext.execute(DelAllReqVar) }
+        catch { print(error) }
+    }
 }

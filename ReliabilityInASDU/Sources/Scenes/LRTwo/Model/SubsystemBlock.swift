@@ -45,9 +45,6 @@ public class SubsystemBlock: NSObject, NSCoding, NSSecureCoding, Identifiable {
         }
     }
 
-    public override init() {
-        super.init()
-    }
 
     public required init?(coder: NSCoder) {
         id = coder.decodeObject(forKey: "id") as? UUID ?? UUID()

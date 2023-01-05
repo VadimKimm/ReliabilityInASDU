@@ -9,7 +9,7 @@ import Foundation
 import OrderedCollections
 import SwiftUI
 
-public class SchemeElement: NSObject, Identifiable {
+public class SchemeElement: NSObject, NSCoding, Identifiable {
     public var id = UUID()
     public var title: String = ""
     public var timeToFailure: String = ""
@@ -45,5 +45,25 @@ public class SchemeElement: NSObject, Identifiable {
         self.installationDate = installationDate
         self.requiredReliability = requiredReliability
         self.dateToReplacement = dateToReplacement
+    }
+
+    public func encode(with coder: NSCoder) {
+        coder.encode(id, forKey: "id")
+        coder.encode(title, forKey: "title")
+        coder.encode(timeToFailure, forKey: "timeToFailure")
+        coder.encode(intensityMistakes, forKey: "intensityMistakes")
+        coder.encode(installationDate, forKey: "installationDate")
+        coder.encode(requiredReliability, forKey: "requiredReliability")
+        coder.encode(dateToReplacement, forKey: "dateToReplacement")
+    }
+
+    public required init?(coder: NSCoder) {
+        id = coder.decodeObject(forKey: "id") as? UUID ?? UUID()
+        title = coder.decodeObject(forKey: "title") as? String ?? ""
+        timeToFailure = coder.decodeObject(forKey: "timeToFailure") as? String ?? ""
+        intensityMistakes = coder.decodeObject(forKey: "intensityMistakes") as? String ?? ""
+        installationDate = coder.decodeObject(forKey: "installationDate") as? Date ?? Date()
+        requiredReliability = coder.decodeObject(forKey: "requiredReliability") as? Double ?? 0.0
+        dateToReplacement = coder.decodeObject(forKey: "dateToReplacement") as? Date ?? Date()
     }
 }

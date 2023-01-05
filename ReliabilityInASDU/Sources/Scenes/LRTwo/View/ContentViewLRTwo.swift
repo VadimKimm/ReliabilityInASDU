@@ -19,7 +19,7 @@ struct ContentViewLRTwo: View {
     @State private var showReplacementPlan = false
 
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var operatorReliabilityItems: FetchedResults<OperatorReliabilityItem>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var systemSchemeItems: FetchedResults<SystemSchemeItem>
 
     @State private var showingSaveView = false
     @State private var saveItemName = ""
@@ -121,23 +121,23 @@ struct ContentViewLRTwo: View {
             // TODO: тут должны быть кнопки для сохранения/импорта в базу данных
             VStack(alignment: .leading) {
                 List {
-                    ForEach(operatorReliabilityItems) { item in
+                    ForEach(systemSchemeItems) { item in
                         VStack(alignment: .leading) {
                             Text(item.name ?? "Unknown")
                             Text(item.date?.convertToExtendedString() ?? "Unknown")
                         }
                         .onTapGesture(count: 2, perform: {
-//                            setItemValues(of: item)
+                            setSystemSchemeValues(of: item)
                         })
                     }
-//                    .onDelete(perform: removeOperatorItem(at: ))
+                    .onDelete(perform: removeSystemSchemeItem(at: ))
                 }
 
                 Button("Сохранить") {
                     showingSaveView.toggle()
                 }
                 .sheet(isPresented: $showingSaveView) {
-//                    SaveView(name: $saveItemName, isVisible: $showingSaveView, action: save )
+                    SaveView(name: $saveItemName, isVisible: $showingSaveView, action: save )
                 }
             }
             .frame(width: 200)
@@ -157,11 +157,83 @@ struct ContentViewLRTwo: View {
     }
 }
 
-struct ContentViewLRTwo_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentViewLRTwo(selectedView: .constant(0))
+// MARK: - Core data functions
+
+extension ContentViewLRTwo {
+    func save() {
+        var subsystemsArray = [SubsystemBlockItem(context: moc)]
+
+        for rawSubsystem in self.subsystems {
+            var elementsArray = [SubsystemElementItem(context: moc)]
+
+            for rawElement in rawSubsystem.elements {
+                let element = SubsystemElementItem(context: moc)
+                element.id = rawElement.id
+                element.intensityMistakes = rawElement.intensityMistakes
+                element.requiredReliability = rawElement.requiredReliability ?? 0.0
+                element.timeToFailure = rawElement.timeToFailure
+                element.title = rawElement.title
+                element.dateToReplacement = rawElement.dateToReplacement
+                element.installationDate = rawElement.installationDate
+                elementsArray.append(element)
+            }
+
+            let subsystemBlockItem = SubsystemBlockItem(context: moc)
+            subsystemBlockItem.elements = elementsArray
+            subsystemBlockItem.type = rawSubsystem.type.rawValue
+            subsystemsArray.append(subsystemBlockItem)
+        }
+
+        let systemScheme = SystemSchemeItem(context: moc)
+        systemScheme.reliability = targetReliabilityFactor
+        systemScheme.date = Date()
+        systemScheme.name = saveItemName
+        systemScheme.subsystems = subsystemsArray
+
+        try? moc.save()
+    }
+
+    func setSystemSchemeValues(of item: SystemSchemeItem) {
+        targetReliabilityFactor = item.reliability ?? "Unknown"
+
+        guard let coreDataSubsystems = item.subsystems else { return }
+
+        var unwrappedSubsystemsArray = [SubsystemBlock]()
+
+        for subsystem in coreDataSubsystems {
+            guard let elements = subsystem.elements else { return }
+
+            var unwrappedElementsArray = [SchemeElement]()
+            for element in elements {
+                let unwrappedElement = SchemeElement(id: element.id ?? UUID(),
+                                                     title: element.title ?? "Unknown",
+                                                     timeToFailure: element.timeToFailure ?? "Unknown",
+                                                     intensityMistakes: element.intensityMistakes ?? "Unknown",
+                                                     installationDate: element.installationDate ?? Date(),
+                                                     requiredReliability: element.requiredReliability,
+                                                     dateToReplacement: element.dateToReplacement ?? Date())
+                unwrappedElementsArray.append(unwrappedElement)
+            }
+
+            let unwrappedSubsystem = SubsystemBlock(stringType: subsystem.type ?? "Тип 1")
+            unwrappedSubsystem.elements = unwrappedElementsArray
+            
+            unwrappedSubsystemsArray.append(unwrappedSubsystem)
+        }
+
+        self.subsystems = unwrappedSubsystemsArray
+    }
+
+    func removeSystemSchemeItem(at offsets: IndexSet) {
+        for index in offsets {
+            let item = systemSchemeItems[index]
+            moc.delete(item)
+        }
+
+        try? moc.save()
     }
 }
+
 
 // MARK: - Make plan
 

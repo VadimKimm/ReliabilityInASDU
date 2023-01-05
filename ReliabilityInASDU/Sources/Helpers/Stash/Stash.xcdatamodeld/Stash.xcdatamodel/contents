@@ -10,7 +10,7 @@
     </entity>
     <entity name="OperatorReliabilityItem" representedClassName="OperatorReliabilityItem" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="items" optional="YES" attributeType="Transformable" customClassName="[OperatorTaskModel]"/>
+        <attribute name="items" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="[OperatorTaskModel]"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="pi" optional="YES" attributeType="String"/>
         <attribute name="pk" optional="YES" attributeType="String"/>
@@ -18,7 +18,7 @@
         <attribute name="reliability" optional="YES" attributeType="String"/>
     </entity>
     <entity name="SubsystemBlockItem" representedClassName="SubsystemBlockItem" syncable="YES" codeGenerationType="class">
-        <attribute name="elements" optional="YES" attributeType="Transformable" customClassName="[SubsystemElementItem]"/>
+        <attribute name="elements" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="[SubsystemElementItem]"/>
         <attribute name="type" optional="YES" attributeType="String" customClassName="SubsystemBlockType"/>
     </entity>
     <entity name="SubsystemElementItem" representedClassName="SubsystemElementItem" syncable="YES" codeGenerationType="class">
@@ -34,6 +34,6 @@
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="reliability" optional="YES" attributeType="String"/>
-        <attribute name="subsystems" optional="YES" attributeType="Transformable" customClassName="[SubsystemBlockItem]"/>
+        <attribute name="subsystems" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="[SubsystemBlockItem]"/>
     </entity>
 </model>

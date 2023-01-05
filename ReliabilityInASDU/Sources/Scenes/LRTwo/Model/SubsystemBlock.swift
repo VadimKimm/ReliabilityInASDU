@@ -25,4 +25,19 @@ class SubsystemBlock: Identifiable {
     init(type: SubsystemBlockType) {
         self.type = type
     }
+
+    init(stringType: String) {
+        switch stringType {
+        case "Тип 1":
+            self.type = .firstType
+        case "Тип 2":
+            self.type = .secondType
+        case "Тип 3":
+            self.type = .thirdType
+        case "Тип 4":
+            self.type = .fourthType
+        default:
+            self.type = .firstType
+        }
+    }
 }

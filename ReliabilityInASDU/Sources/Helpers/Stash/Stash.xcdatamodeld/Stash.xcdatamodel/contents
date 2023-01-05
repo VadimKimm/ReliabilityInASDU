@@ -20,6 +20,7 @@
     <entity name="SystemSchemeItem" representedClassName="SystemSchemeItem" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="subsystems" optional="YES" attributeType="Transformable" customClassName="[SubsystemBlock]"/>
+        <attribute name="subsystems" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[SubsystemBlock]"/>
+        <attribute name="targetReliabilityFactor" optional="YES" attributeType="String"/>
     </entity>
 </model>

@@ -9,7 +9,9 @@ import Foundation
 import OrderedCollections
 import SwiftUI
 
-public class SchemeElement: NSObject, NSCoding, Identifiable {
+public class SchemeElement: NSObject, NSCoding, NSSecureCoding, Identifiable {
+    public static var supportsSecureCoding: Bool = true
+
     public var id = UUID()
     public var title: String = ""
     public var timeToFailure: String = ""

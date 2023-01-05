@@ -6,10 +6,11 @@
 //
 
 import Foundation
-import SwiftUI
 
-public class SubsystemBlock: NSObject, NSCoding, Identifiable {
-    @Published public var id = UUID()
+public class SubsystemBlock: NSObject, NSCoding, NSSecureCoding, Identifiable {
+    public static var supportsSecureCoding: Bool = true
+
+    public var id = UUID()
     public var _type: SubsystemBlockType = .firstType
     public var type: SubsystemBlockType {
         get {
@@ -23,16 +24,13 @@ public class SubsystemBlock: NSObject, NSCoding, Identifiable {
     public var elements: [SchemeElement] = []
     public var isSelected = false
 
-    func toggleIsSelected() {
-        isSelected = true
-    }
-
     init(type: SubsystemBlockType) {
         super.init()
         self.type = type
     }
 
     init(stringType: String) {
+        super.init()
         switch stringType {
         case "Тип 1":
             self._type = .firstType

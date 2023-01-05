@@ -85,6 +85,7 @@ struct ContentViewLRTwo: View {
                             .padding(.horizontal, 10)
                         TextField("", text: $targetReliabilityFactor)
                             .frame(width: 60)
+                            .foregroundColor(targetReliabilityFactor.isNumeric && Double(targetReliabilityFactor) ?? 0.95 < 1.0  ? .white : .red)
 
                         Button {
                             subsystems.append(SubsystemBlock(type: .firstType))
@@ -99,8 +100,18 @@ struct ContentViewLRTwo: View {
                         .padding(.leading, 70)
 
                         Button {
+                            guard (Double(targetReliabilityFactor) != nil && Double(targetReliabilityFactor) ?? 0.95 < 1)
+                            else {
+                                alertMessage = "Уровень надежности должен быть меньше 1"
+                                showAlert.toggle()
+                                return
+                            }
                             makePlan()
-                            guard !subsystems.isEmpty else { return }
+                            guard !subsystems.isEmpty
+                            else {
+                                showAlert.toggle()
+                                return
+                            }
                             showReplacementPlan.toggle()
                         } label: {
                             Text("Сформировать план")

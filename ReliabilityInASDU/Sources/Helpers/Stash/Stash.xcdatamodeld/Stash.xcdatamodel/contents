@@ -17,9 +17,23 @@
         <attribute name="pob" optional="YES" attributeType="String"/>
         <attribute name="reliability" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="SubsystemBlockItem" representedClassName="SubsystemBlockItem" syncable="YES" codeGenerationType="class">
+        <attribute name="elements" optional="YES" attributeType="Transformable" customClassName="[SubsystemElementItem]"/>
+        <attribute name="type" optional="YES" attributeType="String" customClassName="SubsystemBlockType"/>
+    </entity>
+    <entity name="SubsystemElementItem" representedClassName="SubsystemElementItem" syncable="YES" codeGenerationType="class">
+        <attribute name="dateToReplacement" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="installationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="intensityMistakes" optional="YES" attributeType="String"/>
+        <attribute name="requiredReliability" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="timeToFailure" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="SystemSchemeItem" representedClassName="SystemSchemeItem" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="subsystems" optional="YES" attributeType="Transformable" customClassName="[SubsystemBlock]"/>
+        <attribute name="reliability" optional="YES" attributeType="String"/>
+        <attribute name="subsystems" optional="YES" attributeType="Transformable" customClassName="[SubsystemBlockItem]"/>
     </entity>
 </model>

@@ -8,7 +8,6 @@
 import Foundation
 
 public enum SubsystemBlockType: String, Identifiable, CaseIterable {
-//    case empty = "_"
     case firstType = "Тип 1"
     case secondType = "Тип 2"
     case thirdType = "Тип 3"
@@ -20,8 +19,6 @@ public enum SubsystemBlockType: String, Identifiable, CaseIterable {
 
     var block: [SchemeElement] {
         switch self {
-//        case .empty:
-//            return [SchemeElement]()
         case .firstType:
             return createFirstTypeBlock()
         case .secondType:

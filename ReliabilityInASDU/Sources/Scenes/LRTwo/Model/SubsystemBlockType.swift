@@ -7,14 +7,14 @@
 
 import Foundation
 
-enum SubsystemBlockType: String, Identifiable, CaseIterable {
+public enum SubsystemBlockType: String, Identifiable, CaseIterable {
 //    case empty = "_"
     case firstType = "Тип 1"
     case secondType = "Тип 2"
     case thirdType = "Тип 3"
     case fourthType = "Тип 4"
 
-    var id: Self {
+    public var id: Self {
         self
     }
 

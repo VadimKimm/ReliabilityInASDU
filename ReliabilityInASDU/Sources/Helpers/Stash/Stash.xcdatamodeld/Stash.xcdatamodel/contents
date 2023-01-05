@@ -17,11 +17,9 @@
         <attribute name="pob" optional="YES" attributeType="String"/>
         <attribute name="reliability" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="OperatorTask1" representedClassName="OperatorTask1" syncable="YES" codeGenerationType="class">
-        <attribute name="averageTime" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="intensityMistakes" optional="YES" attributeType="String"/>
-        <attribute name="itemDescription" optional="YES" attributeType="String"/>
-        <attribute name="numberOfOperations" optional="YES" attributeType="String"/>
+    <entity name="SystemSchemeItem" representedClassName="SystemSchemeItem" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="subsystems" optional="YES" attributeType="Transformable" customClassName="[SubsystemBlock]"/>
     </entity>
 </model>

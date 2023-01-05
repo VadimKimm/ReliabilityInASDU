@@ -17,7 +17,7 @@ struct SubsystemBlockView: View {
             Image(imageName)
 
             Button("Редактировать эелементы") {
-                isVisible = true
+                isVisible.toggle()
             }
             .padding(.bottom, 8)
         }

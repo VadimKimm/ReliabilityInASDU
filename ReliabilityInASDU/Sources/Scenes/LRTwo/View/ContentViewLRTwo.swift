@@ -18,6 +18,12 @@ struct ContentViewLRTwo: View {
     @State private var alertMessage = ""
     @State private var showReplacementPlan = false
 
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var operatorReliabilityItems: FetchedResults<OperatorReliabilityItem>
+
+    @State private var showingSaveView = false
+    @State private var saveItemName = ""
+
     var body: some View {
         HStack {
             VStack {
@@ -81,8 +87,19 @@ struct ContentViewLRTwo: View {
                             .frame(width: 60)
 
                         Button {
-                            makePlan()
+                            subsystems.append(SubsystemBlock(type: .firstType))
+                        } label: {
+                            Text("Добавить подсистему")
+                                .frame(width: 200, height: 40)
+                                .lineLimit(1)
+                                .clipShape(Capsule())
+                        }
+                        .buttonStyle(WhiteButtonStyle())
+                        .frame(width: 200)
+                        .padding(.leading, 70)
 
+                        Button {
+                            makePlan()
                             guard !subsystems.isEmpty else { return }
                             showReplacementPlan.toggle()
                         } label: {
@@ -93,7 +110,8 @@ struct ContentViewLRTwo: View {
                         }
                         .buttonStyle(WhiteButtonStyle())
                         .frame(width: 200)
-                        .padding(.leading, 180)
+                        .padding(.leading, 10)
+
                     }
                 }
                 .padding(.top, 20)
@@ -102,18 +120,28 @@ struct ContentViewLRTwo: View {
 
             // TODO: тут должны быть кнопки для сохранения/импорта в базу данных
             VStack(alignment: .leading) {
-                Button(role: .cancel) {
-                    subsystems.append(SubsystemBlock(type: .firstType))
-                } label: {
-                    Label("Добавить", systemImage: "plus")
+                List {
+                    ForEach(operatorReliabilityItems) { item in
+                        VStack(alignment: .leading) {
+                            Text(item.name ?? "Unknown")
+                            Text(item.date?.convertToExtendedString() ?? "Unknown")
+                        }
+                        .onTapGesture(count: 2, perform: {
+//                            setItemValues(of: item)
+                        })
+                    }
+//                    .onDelete(perform: removeOperatorItem(at: ))
                 }
 
-                Spacer()
-
+                Button("Сохранить") {
+                    showingSaveView.toggle()
+                }
+                .sheet(isPresented: $showingSaveView) {
+//                    SaveView(name: $saveItemName, isVisible: $showingSaveView, action: save )
+                }
             }
-            .frame(width: 150)
-            .padding(.top, 40)
-            .padding(.trailing, 20)
+            .frame(width: 200)
+            .padding(.all, 20)
         }
         .frame(minWidth: 1000, minHeight: 600)
         .navigationTitle("НАДЕЖНОСТЬ ТЕХНОЛОГИЧЕСКОГО ОБОРУДОВАНИЯ. ПОСТРОЕНИЕ ПЛАНА ЗАМЕНЫ ОБОРУДОВАНИЯ")

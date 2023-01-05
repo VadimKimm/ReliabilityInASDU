@@ -146,7 +146,7 @@ struct ContentViewLRFour: View {
             VStack(alignment: .leading) {
                 List {
                     ForEach(jmItems) { item in
-                        HStack {
+                        VStack(alignment: .leading) {
                             Text(item.name ?? "Unknown")
                             Text(item.date?.convertToExtendedString() ?? "Unknown")
                         }

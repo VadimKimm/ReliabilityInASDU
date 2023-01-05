@@ -24,8 +24,8 @@ struct SubsystemComponentsView: View {
     }
 }
 
-struct SchemeComponentsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SubsystemComponentsView(subsystem: .constant(SubsystemBlock(type: .firstType)))
-    }
-}
+//struct SchemeComponentsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SubsystemComponentsView(subsystem: .constant(SubsystemBlock(type: .firstType)))
+//    }
+//}

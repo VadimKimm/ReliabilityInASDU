@@ -114,7 +114,7 @@ struct ContentViewLROne: View {
             VStack(alignment: .leading) {
                 List {
                     ForEach(operatorReliabilityItems) { item in
-                        HStack {
+                        VStack(alignment: .leading) {
                             Text(item.name ?? "Unknown")
                             Text(item.date?.convertToExtendedString() ?? "Unknown")
                         }

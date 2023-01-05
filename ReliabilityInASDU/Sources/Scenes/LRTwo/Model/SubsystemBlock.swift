@@ -32,6 +32,21 @@ public class SubsystemBlock: NSObject, NSCoding, Identifiable {
         self.type = type
     }
 
+    init(stringType: String) {
+        switch stringType {
+        case "Тип 1":
+            self._type = .firstType
+        case "Тип 2":
+            self._type = .secondType
+        case "Тип 3":
+            self._type = .thirdType
+        case "Тип 4":
+            self._type = .fourthType
+        default:
+            self._type = .firstType
+        }
+    }
+
     public override init() {
         super.init()
     }

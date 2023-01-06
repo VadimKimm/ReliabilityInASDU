@@ -33,7 +33,6 @@ struct MainView: View {
 
                     Button {
                         selectedView = 2
-                        StashController.shared.deleteAllData(entity: "SystemSchemeItem")
                     } label: {
                         Text("НАДЕЖНОСТЬ ТЕХНОЛОГИЧЕСКОГО ОБОРУДОВАНИЯ. ПОСТРОЕНИЕ ПЛАНА ЗАМЕНЫ ОБОРУДОВАНИЯ")
                             .frame(width: 300, height: 80)
@@ -70,7 +69,8 @@ struct MainView: View {
             ContentViewLROne(selectedView: $selectedView)
                 .background(Color.gray)
         } else if selectedView == 2 {
-            ContentViewLRTwo(selectedView: $selectedView)
+//            ContentViewLRTwo(selectedView: $selectedView)
+            RealmContentViewLRTwo(selectedView: $selectedView)
                 .background(Color.gray)
         } else if selectedView == 3 {
             ContentViewLRFour(selectedView: $selectedView)

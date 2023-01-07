@@ -155,7 +155,8 @@ struct RealmContentViewLRTwo: View {
                 }
 
                 Button("Сохранить в файл") {
-                    FileExporter.exportPDF(text: "123")
+                    let text = makeStringToSave()
+                    FileExporter.exportPDF(text: text)
                 }
             }
             .frame(width: 200)
@@ -175,7 +176,7 @@ struct RealmContentViewLRTwo: View {
     }
 }
 
-// MARK: - Core data functions
+// MARK: - Realm functions
 
 extension RealmContentViewLRTwo {
     func save() {
@@ -278,9 +279,11 @@ extension RealmContentViewLRTwo {
 
         print("--------------------------------\n\n")
     }
+}
 
-    //MARK: - Calculate Pi
+//MARK: - Calculate Pi
 
+extension RealmContentViewLRTwo {
     func calculatePdesired(numberOfSubsystems: Int) -> Double  {
         let lhs = Float(targetReliabilityFactor) ?? 0.95
         let rhs = Float(1.0 / Double(numberOfSubsystems))
@@ -308,8 +311,11 @@ extension RealmContentViewLRTwo {
         let P1 = sqrt((2 - sqrt(4.0 - 4.0 * Pdesired)) / 2)
         return [P1, P1, P1, P1]
     }
+}
 
-    //MARK: - Calculate time to element replacement
+//MARK: - Calculate time to element replacement
+
+extension RealmContentViewLRTwo {
 
     func calculateTimeToReplacementForElements(_ subsystem: SubsystemBlock, arrayOfPi: [Double]) -> [Double] {
         var result = [Double]()
@@ -362,5 +368,33 @@ extension RealmContentViewLRTwo {
         }
 
         return result
+    }
+}
+
+// MARK: - Save to file
+
+extension RealmContentViewLRTwo {
+    func makeStringToSave() -> String {
+        var text = "НАДЕЖНОСТЬ ТЕХНОЛОГИЧЕСКОГО ОБОРУДОВАНИЯ. ПОСТРОЕНИЕ ПЛАНА ЗАМЕНЫ ОБОРУДОВАНИЯ\n\n"
+        text += "Критический уровень надежности: \(targetReliabilityFactor)\n\n"
+
+        for (index, subsystem) in subsystems.enumerated() {
+            text += "Подсистема #\(index + 1)\n"
+            text += "Тип подсистемы: \(subsystem.type.rawValue)\n"
+
+            for (elIndex, element) in subsystem.elements.enumerated() {
+                text += " Элемент #\(elIndex + 1)\n"
+                text += "  Название элемента: \(element.title)\n"
+                text += "  Нараб. на отказ, ч: \(element.timeToFailure)\n"
+                text += "  Интенс. отказов, 1/ч: \(element.intensityMistakes)\n"
+                text += "  Дата установки: \(element.installationDate.convertToExtendedString())\n\n"
+
+                text += "  Предполагаемая дата замены: \(element.dateToReplacement?.convertToExtendedString() ?? "Unknown")\n"
+                text += "  Требуемая надежность: \(element.requiredReliability ?? 0.0)\n\n\n"
+            }
+
+        }
+
+        return text
     }
 }

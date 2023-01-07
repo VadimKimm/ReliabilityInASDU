@@ -51,11 +51,7 @@ struct ContentViewLRThree: View {
     }
 }
 
-struct ContentViewLRThree_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentViewLRThree()
-    }
-}
+// MARK: - Calculate Kaplan Model
 
 extension ContentViewLRThree {
     func calculate(_ objects: Int) {

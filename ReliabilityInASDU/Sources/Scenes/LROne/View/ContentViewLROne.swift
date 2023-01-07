@@ -234,7 +234,7 @@ extension ContentViewLROne {
 
 extension ContentViewLROne {
     func makeStringToSave() -> String {
-        var text = String()
+        var text = "ОЦЕНКА НАДЕЖНОСТИ БЕЗОШИБОЧНОГО ВЫПОЛНЕНИЯ ОПЕРАТОРОМ ПОСТАВЛЕННЫХ ЕМУ ЗАДАЧ\n\n"
 
         for item in data {
             text += "Вид деятельности: \(item.descriptionModel)\n"

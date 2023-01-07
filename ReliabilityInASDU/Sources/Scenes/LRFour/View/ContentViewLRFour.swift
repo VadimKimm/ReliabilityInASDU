@@ -118,10 +118,10 @@ struct ContentViewLRFour: View {
                             calculateJM()
                         }
 
-//                        Button("Сохранить в PDF") {
-////                            exportPDF()
-//                        }
-                    }
+                        Button("Сохранить в файл") {
+                            let text = makeStringToSave()
+                            FileExporter.exportPDF(text: text)
+                        }                    }
 
                     Button("Показать график") {
                         showingSheet.toggle()
@@ -166,7 +166,8 @@ struct ContentViewLRFour: View {
                 }
 
                 Button("Сохранить в файл") {
-                    FileExporter.exportPDF(text: "123")
+                    let text = makeStringToSave()
+                    FileExporter.exportPDF(text: text)
                 }
             }
             .frame(width: 200)
@@ -255,7 +256,7 @@ extension ContentViewLRFour {
     }
 }
 
-//J-M functions
+// MARK: - J-M functions
 
 extension ContentViewLRFour {
     func calculateJM() {
@@ -341,5 +342,26 @@ extension ContentViewLRFour {
         }
 
         return newValues
+    }
+}
+
+// MARK: - Save to file
+
+extension ContentViewLRFour {
+    func makeStringToSave() -> String {
+        var text = "РАСЧЕТ НАДЕЖНОСТИ ПО\n\n"
+        text += "Модель Миллса\n"
+        text += " Количество искусственно внесенных ошибок, S: \(S)\n"
+        text += " Число обнаруженных искусственных ошибок, V: \(V)\n"
+        text += " Число обнаруженных естесственных ошибок, K: \(K)\n"
+        text += "  Вероятность того, что в программе нет ошибок:: \(millsResult)\n\n"
+
+        text += "Модель Джелинского-Моранды\n"
+        text += " Число обнаруженных отказов ПО за время тестирования, m: \(m)\n"
+        text += " Число ошибок, первоначально присутствующих в программе, N: \(N)\n"
+        text += " Интервалы времени между отказами, x: \(x)\n"
+        text += "  Вероятность того, что в программе нет ошибок: \(jmResult)"
+
+        return text
     }
 }

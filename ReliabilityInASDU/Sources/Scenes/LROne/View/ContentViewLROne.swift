@@ -100,10 +100,12 @@ struct ContentViewLROne: View {
                     Button("Рассчитать") {
                         computeButtonPressed()
                     }
-                    
-                    TextField("Надежность", text: $result)
+
+                    Text("Надежность:")
+
+                    TextField("", text: $result)
                         .frame(width: 100)
-                        .padding(.leading, 20)
+                        .padding(.leading, 5)
                 }
                 .padding(.bottom, 10)
 
@@ -125,11 +127,16 @@ struct ContentViewLROne: View {
                     .onDelete(perform: removeOperatorItem(at: ))
                 }
 
-                Button("Сохранить") {
+                Button("Сохранить в БД") {
                     showingSaveView.toggle()
                 }
                 .sheet(isPresented: $showingSaveView) {
-                    SaveView(name: $saveItemName, isVisible: $showingSaveView, action: save )
+                    SaveView(name: $saveItemName, isVisible: $showingSaveView, action: save)
+                }
+
+                Button("Сохранить в файл") {
+                    let text = makeStringToSave()
+                    FileExporter.exportPDF(text: text)
                 }
             }
             .frame(width: 200)
@@ -201,7 +208,6 @@ extension ContentViewLROne {
 
 extension ContentViewLROne {
     private func computeButtonPressed() {
-//        submitButtonPressed()
         let result = computeProbability(array: data)
         self.result = result
     }
@@ -221,5 +227,27 @@ extension ContentViewLROne {
 
         Pop = exp(-expPower)
         return String(format: "%.4f", (Pop + (1 - Pop) * Pisp))
+    }
+}
+
+// MARK: - Save to file
+
+extension ContentViewLROne {
+    func makeStringToSave() -> String {
+        var text = String()
+
+        for item in data {
+            text += "Вид деятельности: \(item.descriptionModel)\n"
+            text += "Интенсивность ошибок: \(item.intensityMistakes)\n"
+            text += "Число выполненых операций: \(item.numberOfOperations)\n"
+            text += "Среднее время выполнения операции: \(item.averageTime)\n\n"
+        }
+
+        text += "Pk: \(Pk) "
+        text += "Pob: \(Pob) "
+        text += "Pi: \(Pi)\n"
+        text += "Надежность: \(result)"
+
+        return text
     }
 }

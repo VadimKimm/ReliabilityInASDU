@@ -147,11 +147,15 @@ struct RealmContentViewLRTwo: View {
                     .onDelete(perform: $system.remove(atOffsets:))
                 }
 
-                Button("Сохранить") {
+                Button("Сохранить в БД") {
                     showingSaveView.toggle()
                 }
                 .sheet(isPresented: $showingSaveView) {
-                    SaveView(name: $saveItemName, isVisible: $showingSaveView, action: save )
+                    SaveView(name: $saveItemName, isVisible: $showingSaveView, action: save)
+                }
+
+                Button("Сохранить в файл") {
+                    FileExporter.exportPDF(text: "123")
                 }
             }
             .frame(width: 200)

@@ -28,6 +28,7 @@
 		DD875CE9296863BF00427C4D /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = DD875CE8296863BF00427C4D /* OrderedCollections */; };
 		DD875CEB296863BF00427C4D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = DD875CEA296863BF00427C4D /* Realm */; };
 		DD875CED296863BF00427C4D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DD875CEC296863BF00427C4D /* RealmSwift */; };
+		DD875CEF29687BA200427C4D /* FileExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD875CEE29687BA200427C4D /* FileExporter.swift */; };
 		DD94FE0E290D520A009E07D7 /* JMChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD94FE0D290D520A009E07D7 /* JMChartView.swift */; };
 		DD94FE11290D53BA009E07D7 /* JMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD94FE10290D53BA009E07D7 /* JMModel.swift */; };
 		DD9792FD2906BE0300F8695D /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9792FC2906BE0300F8695D /* CustomColors.swift */; };
@@ -44,7 +45,6 @@
 		DDC3754128DDD1D1005A5EE2 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC3754028DDD1D1005A5EE2 /* HeaderView.swift */; };
 		DDCD765828CFBC9100F637CE /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = DDCD765728CFBC9100F637CE /* data.json */; };
 		DDCD765B28CFBCD100F637CE /* OperatorTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCD765A28CFBCD100F637CE /* OperatorTaskModel.swift */; };
-		DDCD765E28CFBD1800F637CE /* ParseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCD765D28CFBD1800F637CE /* ParseData.swift */; };
 		DDDB77A02965BC2E00B09D01 /* Stash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DDDB779E2965BC2E00B09D01 /* Stash.xcdatamodeld */; };
 		DDDB77A22965BD5700B09D01 /* StashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDB77A12965BD5700B09D01 /* StashController.swift */; };
 		DDDB77A52965D0B000B09D01 /* SaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDB77A42965D0B000B09D01 /* SaveView.swift */; };
@@ -82,6 +82,7 @@
 		DD494B6F29361A580050EE0F /* EditButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButtonView.swift; sourceTree = "<group>"; };
 		DD4DA6E329081BD800ECA0D0 /* ContentViewLRFour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewLRFour.swift; sourceTree = "<group>"; };
 		DD7BE80E2958B154001F5C6D /* JMTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMTableView.swift; sourceTree = "<group>"; };
+		DD875CEE29687BA200427C4D /* FileExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileExporter.swift; sourceTree = "<group>"; };
 		DD94FE0D290D520A009E07D7 /* JMChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMChartView.swift; sourceTree = "<group>"; };
 		DD94FE10290D53BA009E07D7 /* JMModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMModel.swift; sourceTree = "<group>"; };
 		DD9792FC2906BE0300F8695D /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
@@ -98,7 +99,6 @@
 		DDC3754028DDD1D1005A5EE2 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		DDCD765728CFBC9100F637CE /* data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		DDCD765A28CFBCD100F637CE /* OperatorTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorTaskModel.swift; sourceTree = "<group>"; };
-		DDCD765D28CFBD1800F637CE /* ParseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseData.swift; sourceTree = "<group>"; };
 		DDDB779F2965BC2E00B09D01 /* Stash.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stash.xcdatamodel; sourceTree = "<group>"; };
 		DDDB77A12965BD5700B09D01 /* StashController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StashController.swift; sourceTree = "<group>"; };
 		DDDB77A42965D0B000B09D01 /* SaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveView.swift; sourceTree = "<group>"; };
@@ -163,6 +163,7 @@
 				DDE1EA03293960C3003ACBE6 /* WhiteButtonStyle.swift */,
 				DDDB77A42965D0B000B09D01 /* SaveView.swift */,
 				DDDB77C8296853C300B09D01 /* Migrator.swift */,
+				DD875CEE29687BA200427C4D /* FileExporter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -304,14 +305,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		DDCD765C28CFBCF900F637CE /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				DDCD765D28CFBD1800F637CE /* ParseData.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		DDDB77A32965BD7B00B09D01 /* Stash */ = {
 			isa = PBXGroup;
 			children = (
@@ -444,7 +437,6 @@
 		DDF6E3E528CFB9BE00E72250 /* LROne */ = {
 			isa = PBXGroup;
 			children = (
-				DDCD765C28CFBCF900F637CE /* Helpers */,
 				DDCD765928CFBCA800F637CE /* Model */,
 				DDF6E3E628CFB9C800E72250 /* View */,
 			);
@@ -566,12 +558,12 @@
 				DDDB77C329684AB500B09D01 /* RealmSchemeElement.swift in Sources */,
 				DDDB77C9296853C300B09D01 /* Migrator.swift in Sources */,
 				DD42012128D4E010007BB9E6 /* TabButtonView.swift in Sources */,
+				DD875CEF29687BA200427C4D /* FileExporter.swift in Sources */,
 				DD1EA23228EF36E400128FF6 /* Double+Ext.swift in Sources */,
 				DDCD765B28CFBCD100F637CE /* OperatorTaskModel.swift in Sources */,
 				DD94FE11290D53BA009E07D7 /* JMModel.swift in Sources */,
 				DDDD677A2936C90F006D154A /* ReplacementPlanView.swift in Sources */,
 				DD94FE0E290D520A009E07D7 /* JMChartView.swift in Sources */,
-				DDCD765E28CFBD1800F637CE /* ParseData.swift in Sources */,
 				DD9793082906BE5F00F8695D /* LineChartView.swift in Sources */,
 				DD494B7029361A580050EE0F /* EditButtonView.swift in Sources */,
 				DDDB77CB2968564A00B09D01 /* RealmSystem.swift in Sources */,

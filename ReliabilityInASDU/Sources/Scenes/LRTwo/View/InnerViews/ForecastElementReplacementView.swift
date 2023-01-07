@@ -36,6 +36,11 @@ struct ForecastElementReplacementView: View {
                 makeForecast()
             }
 
+            Button("Сохранить в файл") {
+                let text = makeStringToSave()
+                FileExporter.exportPDF(text: text)
+            }
+
             Button("Закрыть") {
                 isVisible = false
             }
@@ -62,5 +67,27 @@ extension ForecastElementReplacementView {
 
         numberOfReplacements = String(counter)
         replacementsDescription = description
+    }
+}
+
+// MARK: - Save to file
+
+extension ForecastElementReplacementView {
+    func makeStringToSave() -> String {
+        var text = "ПЛАН ЗАМЕНЫ ОБОРУДОВАНИЯ\n\n"
+        text += "К \(date.convertToExtendedString()) должно быть заменено \(numberOfReplacements) элементов:\n"
+
+        for (index, subsystem) in subsystems.enumerated() {
+            text += "Подсистема #\(index + 1)\n"
+
+            for (elIndex, element) in subsystem.elements.enumerated() {
+                text += " Элемент #\(elIndex + 1)\n"
+                text += "  Название элемента: \(element.title)\n"
+                text += "  Дата установки: \(element.installationDate.convertToExtendedString())\n\n"
+            }
+
+        }
+
+        return text
     }
 }

@@ -17,27 +17,8 @@ class RealmSchemeElement: Object, Identifiable {
     @Persisted var installationDate: Date
     @Persisted var requiredReliability: Double?
     @Persisted var dateToReplacement: Date?
-//    var dataForChart: OrderedDictionary<String, String>?
 
     override class func primaryKey() -> String? {
         "id"
     }
-    
-//    var _timeToFailure: String {
-//        get {
-//            timeToFailure
-//        } set {
-//            timeToFailure = newValue
-//            intensityMistakes = String(1.0 / (Double(newValue) ?? 10))
-//        }
-//    }
-//
-//    var _intensityMistakes: String {
-//        get {
-//            intensityMistakes
-//        } set {
-//            intensityMistakes = newValue
-//            timeToFailure = String(1.0 / (Double(newValue) ?? 10))
-//        }
-//    }
 }

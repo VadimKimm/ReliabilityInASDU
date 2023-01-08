@@ -153,15 +153,12 @@
 		DD1EA22A28EF06D600128FF6 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				DDDB77A32965BD7B00B09D01 /* Stash */,
 				DD42012228D4F41B007BB9E6 /* String+Ext.swift */,
 				DD1EA22B28EF072200128FF6 /* Date+Ext.swift */,
 				DD1EA23128EF36E400128FF6 /* Double+Ext.swift */,
 				DDDD678029378114006D154A /* BlueButtonStyle.swift */,
 				DDE1EA03293960C3003ACBE6 /* WhiteButtonStyle.swift */,
 				DDDB77A42965D0B000B09D01 /* SaveView.swift */,
-				DDDB77C8296853C300B09D01 /* Migrator.swift */,
-				DD875CEE29687BA200427C4D /* FileExporter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -219,6 +216,16 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DD875CF0296AF9B700427C4D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DDDB77A32965BD7B00B09D01 /* Stash */,
+				DD875CEE29687BA200427C4D /* FileExporter.swift */,
+				DDDB77C8296853C300B09D01 /* Migrator.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		DD94FE0F290D53AB009E07D7 /* Model */ = {
@@ -388,9 +395,10 @@
 		DDF6E3E228CFB99F00E72250 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				DD1EA22A28EF06D600128FF6 /* Helpers */,
 				DDF6E3E328CFB9A400E72250 /* Application */,
 				DDF6E3E428CFB9B000E72250 /* Scenes */,
+				DD875CF0296AF9B700427C4D /* Services */,
+				DD1EA22A28EF06D600128FF6 /* Helpers */,
 			);
 			path = Sources;
 			sourceTree = "<group>";

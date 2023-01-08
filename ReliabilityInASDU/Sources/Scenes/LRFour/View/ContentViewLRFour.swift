@@ -12,9 +12,9 @@ import Collections
 struct ContentViewLRFour: View {
 
     @State var result = ""
-    @State var S: String = "10"
-    @State var V: String = "5"
-    @State var K: String = "6"
+    @State var S: String = ""
+    @State var V: String = ""
+    @State var K: String = ""
     @State var millsResult: String = ""
 
     @State var m: String = "" //число обнаруженных отказов между тестированием
@@ -25,7 +25,7 @@ struct ContentViewLRFour: View {
     @State var dataForChart: OrderedDictionary<Double, Double>? = nil
 
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var jmItems: FetchedResults<JMItem>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var softwareReliabilityItems: FetchedResults<SoftwareReliabilityItem>
 
     @State private var showingSheet = false
     @Binding var selectedView: Int
@@ -85,7 +85,7 @@ struct ContentViewLRFour: View {
 
                     HStack(spacing: 40) {
                         VStack {
-                            Text("m – число обнаруженных отказов ПО за время тестирования")
+                            Text("m – число отказов ПО за время тестирования")
                             TextField("", text: $m)
                                 .frame(width: 50)
                                 .foregroundColor(S.isNumeric ? .white : .red)
@@ -117,11 +117,7 @@ struct ContentViewLRFour: View {
                         Button("Рассчитать") {
                             calculateJM()
                         }
-
-                        Button("Сохранить в файл") {
-                            let text = makeStringToSave()
-                            FileExporter.exportPDF(text: text)
-                        }                    }
+                    }
 
                     Button("Показать график") {
                         showingSheet.toggle()
@@ -145,7 +141,7 @@ struct ContentViewLRFour: View {
 
             VStack(alignment: .leading) {
                 List {
-                    ForEach(jmItems) { item in
+                    ForEach(softwareReliabilityItems) { item in
                         VStack(alignment: .leading) {
                             Text(item.name ?? "Unknown")
                             Text(item.date?.convertToExtendedString() ?? "Unknown")
@@ -198,7 +194,7 @@ struct ContentViewLRFour_Previews: PreviewProvider {
 extension ContentViewLRFour {
     func removeJMItem(at offsets: IndexSet) {
         for index in offsets {
-            let item = jmItems[index]
+            let item = softwareReliabilityItems[index]
             moc.delete(item)
         }
 
@@ -206,27 +202,40 @@ extension ContentViewLRFour {
     }
 
     func save() {
-        let jmItem = JMItem(context: moc)
-        jmItem.name = saveItemName
-        jmItem.date = Date()
-        jmItem.x = x
-        jmItem.m = m
-        jmItem.n = N
-        jmItem.probability = jmResult
+        let softwareReliabilityItem = SoftwareReliabilityItem(context: moc)
+        softwareReliabilityItem.name = saveItemName
+        softwareReliabilityItem.date = Date()
+
+        softwareReliabilityItem.x = x
+        softwareReliabilityItem.m = m
+        softwareReliabilityItem.n = N
+        softwareReliabilityItem.jmProbability = jmResult
+
+        softwareReliabilityItem.s = S
+        softwareReliabilityItem.v = K
+        softwareReliabilityItem.k = K
+        softwareReliabilityItem.millsProbability = millsResult
 
         try? moc.save()
     }
 
-    func setItemValues(of item: JMItem) {
+    func setItemValues(of item: SoftwareReliabilityItem) {
         x = item.x ?? "1 2 3"
         m = item.m ?? "3"
         N = item.n ?? "4"
-        jmResult = item.probability ?? "0.57 0.69 0.83"
+        jmResult = item.jmProbability ?? "0.57 0.69 0.83"
+
+        S = item.s ?? "10"
+        V = item.v ?? "5"
+        K = item.k ?? "6"
+        millsResult = item.millsProbability ?? "0.266"
+
+        calculateMills()
         calculateJM()
     }
 }
 
-//Mills functions
+// MARK: - Mills functions
 
 extension ContentViewLRFour {
     func calculateMills() {
@@ -248,7 +257,7 @@ extension ContentViewLRFour {
         let numerator = factorial(numBot) / (factorial(numTop) * factorial(numBot - numTop))
         let denominator = factorial(denBot) / (factorial(denTop) * factorial(denBot - denTop))
         let result = numerator / denominator
-        millsResult = String(format: "%.3f", result > 1 ? 1 : result)
+        millsResult = String(format: "%.6f", result > 1 ? 1 : result)
     }
 
     func factorial(_ n: Int) -> Double {
@@ -286,7 +295,7 @@ extension ContentViewLRFour {
             xValues.append(time)
             yValues.append(pValue)
 
-            P.append(String(format: "%.2f", pValue))
+            P.append(String(format: "%.3f", pValue))
         }
 
         yValues.reverse()

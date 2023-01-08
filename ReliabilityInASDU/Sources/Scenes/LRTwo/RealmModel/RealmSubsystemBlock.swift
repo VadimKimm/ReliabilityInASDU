@@ -9,7 +9,6 @@ import Foundation
 import RealmSwift
 
 class RealmSubsystemBlock: Object, Identifiable {
-
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var elements: List<RealmSchemeElement> = List<RealmSchemeElement>()
     @Persisted var isSelected = false

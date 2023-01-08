@@ -18,7 +18,6 @@
 		DD42011F28D4DD03007BB9E6 /* blankData.json in Resources */ = {isa = PBXBuildFile; fileRef = DD42011E28D4DD03007BB9E6 /* blankData.json */; };
 		DD42012128D4E010007BB9E6 /* TabButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD42012028D4E010007BB9E6 /* TabButtonView.swift */; };
 		DD42012328D4F41B007BB9E6 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD42012228D4F41B007BB9E6 /* String+Ext.swift */; };
-		DD494B6C2934D3700050EE0F /* ContentViewLRTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD494B6B2934D3700050EE0F /* ContentViewLRTwo.swift */; };
 		DD494B6E293605630050EE0F /* SubsystemBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD494B6D293605630050EE0F /* SubsystemBlock.swift */; };
 		DD494B7029361A580050EE0F /* EditButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD494B6F29361A580050EE0F /* EditButtonView.swift */; };
 		DD4DA6E429081BD800ECA0D0 /* ContentViewLRFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4DA6E329081BD800ECA0D0 /* ContentViewLRFour.swift */; };
@@ -77,7 +76,6 @@
 		DD42011E28D4DD03007BB9E6 /* blankData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = blankData.json; sourceTree = "<group>"; };
 		DD42012028D4E010007BB9E6 /* TabButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButtonView.swift; sourceTree = "<group>"; };
 		DD42012228D4F41B007BB9E6 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
-		DD494B6B2934D3700050EE0F /* ContentViewLRTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewLRTwo.swift; sourceTree = "<group>"; };
 		DD494B6D293605630050EE0F /* SubsystemBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubsystemBlock.swift; sourceTree = "<group>"; };
 		DD494B6F29361A580050EE0F /* EditButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButtonView.swift; sourceTree = "<group>"; };
 		DD4DA6E329081BD800ECA0D0 /* ContentViewLRFour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewLRFour.swift; sourceTree = "<group>"; };
@@ -171,6 +169,7 @@
 		DD315E3228EECE91009A5F9D /* LRTwo */ = {
 			isa = PBXGroup;
 			children = (
+				DDDB77BE296849B900B09D01 /* RealmModel */,
 				DD315E3328EECEA5009A5F9D /* Model */,
 				DD315E3428EECEA9009A5F9D /* View */,
 			);
@@ -191,7 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				DD1EA21C28EEE4A000128FF6 /* InnerViews */,
-				DD494B6B2934D3700050EE0F /* ContentViewLRTwo.swift */,
+				DDDB77C029684A4C00B09D01 /* RealmContentViewLRTwo.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -314,31 +313,14 @@
 			path = Stash;
 			sourceTree = "<group>";
 		};
-		DDDB77BD296849A200B09D01 /* LRTwoRealm */ = {
-			isa = PBXGroup;
-			children = (
-				DDDB77BE296849B900B09D01 /* Model */,
-				DDDB77BF296849BD00B09D01 /* View */,
-			);
-			path = LRTwoRealm;
-			sourceTree = "<group>";
-		};
-		DDDB77BE296849B900B09D01 /* Model */ = {
+		DDDB77BE296849B900B09D01 /* RealmModel */ = {
 			isa = PBXGroup;
 			children = (
 				DDDB77C229684AB500B09D01 /* RealmSchemeElement.swift */,
 				DDDB77C4296850FA00B09D01 /* RealmSubsystemBlock.swift */,
 				DDDB77CA2968564A00B09D01 /* RealmSystem.swift */,
 			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		DDDB77BF296849BD00B09D01 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				DDDB77C029684A4C00B09D01 /* RealmContentViewLRTwo.swift */,
-			);
-			path = View;
+			path = RealmModel;
 			sourceTree = "<group>";
 		};
 		DDDD677B29377CE0006D154A /* Main */ = {
@@ -426,7 +408,6 @@
 			children = (
 				DDDD677B29377CE0006D154A /* Main */,
 				DDF6E3E528CFB9BE00E72250 /* LROne */,
-				DDDB77BD296849A200B09D01 /* LRTwoRealm */,
 				DD315E3228EECE91009A5F9D /* LRTwo */,
 				DD9792F82906BDE600F8695D /* LRThree */,
 				DD4DA6E129081BAB00ECA0D0 /* LRFour */,
@@ -543,7 +524,6 @@
 				DD97930C2906BE7C00F8695D /* ChartAreaView.swift in Sources */,
 				DD9793052906BE4700F8695D /* LineShape.swift in Sources */,
 				DD9793102906BE9A00F8695D /* XaxisView.swift in Sources */,
-				DD494B6C2934D3700050EE0F /* ContentViewLRTwo.swift in Sources */,
 				DDDB77A22965BD5700B09D01 /* StashController.swift in Sources */,
 				DDE1EA02293953FD003ACBE6 /* ForecastElementReplacementView.swift in Sources */,
 				DD97930A2906BE6B00F8695D /* ChartHeaderView.swift in Sources */,
